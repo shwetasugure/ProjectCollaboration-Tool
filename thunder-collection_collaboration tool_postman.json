@@ -1,0 +1,246 @@
+{
+    "info": {
+        "_postman_id": "a8ac8115-a882-44aa-b19a-9c7b534e0064",
+        "name": "collaboration tool",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "auth",
+            "item": [
+                {
+                    "name": "post projects",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:8000/api/project/",
+                            "path": [
+                                "api",
+                                "project"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000"
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzM3MDA5LCJpYXQiOjE3Mjg3NDUwMDksImp0aSI6ImM5YWRhNjZjMjAxOTRiMzM5ZmE2YmFlMGJlMWQ0NDJhIiwidXNlcl9pZCI6Mn0.fp9cJFaV5dd-5p40PuhNMzYsqIWvAuU3pVvuDG6mt-U"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"name\": \"Project Name\",\n  \"description\": \"Project Description\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "token",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:8000/api/token/",
+                            "path": [
+                                "api",
+                                "token"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"username\": \"metal\",\n  \"password\": \"123123\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "register",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:8000/api/register/",
+                            "path": [
+                                "api",
+                                "register"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"username\": \"metal4\",\n  \"password\": \"123123\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "refresh",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:8000/api/token/refresh/",
+                            "path": [
+                                "api",
+                                "token",
+                                "refresh"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "\n{\n  \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyODgzMzk4MCwiaWF0IjoxNzI4NzQ3NTgwLCJqdGkiOiIyYzI4NWRiZGI4NmM0ZGJhYWY1MjViNmZjYzY2YWE0MSIsInVzZXJfaWQiOjJ9.6sDXl5lG7IHNKzdGLjXRJDEYl5UfMY89D1nAvuwbTAM\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "project",
+            "item": [
+                {
+                    "name": "get projects",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/api/project/",
+                            "path": [
+                                "api",
+                                "project"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000"
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzM5NTgwLCJpYXQiOjE3Mjg3NDc1ODAsImp0aSI6IjRmNmQ1OTkzNjRkNDQxZjhiZTg4NWMzMDhiODk1ZmFmIiwidXNlcl9pZCI6Mn0.Zv1xkPmgPnGFuvVCWfpBSwgypKERSrWyJK7VjDkQ0xk"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "add collaborators",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:8000/api/project/1/",
+                            "path": [
+                                "api",
+                                "project",
+                                "1"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000"
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzM3MDA5LCJpYXQiOjE3Mjg3NDUwMDksImp0aSI6ImM5YWRhNjZjMjAxOTRiMzM5ZmE2YmFlMGJlMWQ0NDJhIiwidXNlcl9pZCI6Mn0.fp9cJFaV5dd-5p40PuhNMzYsqIWvAuU3pVvuDG6mt-U"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"name\": \"Project Name\",\n  \"description\": \"Project Description\",\n  \"collaborators\": [3, 4]\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "http://localhost:8000/api/project/4/",
+                            "path": [
+                                "api",
+                                "project",
+                                "4"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000"
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzM5NTgwLCJpYXQiOjE3Mjg3NDc1ODAsImp0aSI6IjRmNmQ1OTkzNjRkNDQxZjhiZTg4NWMzMDhiODk1ZmFmIiwidXNlcl9pZCI6Mn0.Zv1xkPmgPnGFuvVCWfpBSwgypKERSrWyJK7VjDkQ0xk"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "fetch all users",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/api/users/",
+                            "path": [
+                                "api",
+                                "users"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000"
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzM5NTgwLCJpYXQiOjE3Mjg3NDc1ODAsImp0aSI6IjRmNmQ1OTkzNjRkNDQxZjhiZTg4NWMzMDhiODk1ZmFmIiwidXNlcl9pZCI6Mn0.Zv1xkPmgPnGFuvVCWfpBSwgypKERSrWyJK7VjDkQ0xk"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "task",
+            "item": []
+        }
+    ]
+}
