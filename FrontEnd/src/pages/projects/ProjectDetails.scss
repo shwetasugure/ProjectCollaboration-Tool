@@ -1,0 +1,32 @@
+.project-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+  
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #1a73e8;
+    }
+  
+    h2 {
+      margin-top: 20px;
+    }
+  }
+
+  .add-task-btn {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    
+    &:hover {
+      background-color: #0056b3; /* Darker shade for hover */
+    }
+  }
+  
+  

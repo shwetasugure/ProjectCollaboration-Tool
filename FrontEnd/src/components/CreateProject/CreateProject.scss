@@ -1,0 +1,40 @@
+.create-project-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  
+    h2 {
+      color: #039BE5;
+    }
+  
+    .form-group {
+      margin-bottom: 15px;
+  
+      label {
+        display: block;
+        font-weight: 500;
+        color: #616161;
+      }
+  
+      input, textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #E0E0E0;
+        border-radius: 4px;
+        margin-top: 5px;
+        font-size: 14px;
+      }
+  
+      textarea {
+        resize: none;
+        height: 100px;
+      }
+    }
+  
+    button {
+      margin-top: 10px;
+    }
+  }
+  
