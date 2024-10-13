@@ -1,0 +1,47 @@
+.task-list-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  
+  .view-toggle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  
+    button {
+      padding: 10px;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+  
+      &:hover {
+        background-color: #357ae8;
+      }
+    }
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+  
+    th {
+      background-color: #f1f1f1;
+    }
+  }
+  
+  .kanban-card {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+  }
+  
+  

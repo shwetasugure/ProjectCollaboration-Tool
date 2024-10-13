@@ -1,29 +1,33 @@
-// src/components/tasks/TaskKanban.jsx
 import React from 'react';
-import { KanbanComponent } from '@syncfusion/ej2-react-kanban';
+import TaskCard from './TaskCard';
+import './TaskKanban.scss';
 
-const TaskKanban = () => {
-  const data = [
-    { Id: 1, Status: 'To Do', Title: 'Task A', Description: 'Description for Task A' },
-    { Id: 2, Status: 'To Do', Title: 'Task B', Description: 'Description for Task B' },
-    { Id: 3, Status: 'In Progress', Title: 'Task C', Description: 'Description for Task C' },
-    { Id: 4, Status: 'Done', Title: 'Task D', Description: 'Description for Task D' }
-  ];
-
-  const kanbanData = {
-    dataSource: data,
-    cardSettings: {
-      headerField: 'Title',
-      contentField: 'Description'
-    }
+const KanbanView = ({ tasks }) => {
+  const statusGroups = {
+    incomplete: [],
+    complete: [],
   };
 
+  tasks.forEach(task => {
+    statusGroups[task.status].push(task);
+  });
+
   return (
-    <div className="kanban-container">
-      <h2>Task Kanban Board</h2>
-      <KanbanComponent id="kanban" dataSource={kanbanData} />
+    <div className="kanban-view">
+      <div className="kanban-column">
+        <h3>To Do</h3>
+        {statusGroups.incomplete.map(task => (
+          <TaskCard key={task.id} task={task} />
+        ))}
+      </div>
+      <div className="kanban-column">
+        <h3>Completed</h3>
+        {statusGroups.complete.map(task => (
+          <TaskCard key={task.id} task={task} />
+        ))}
+      </div>
     </div>
   );
 };
 
-export default TaskKanban;
+export default KanbanView;

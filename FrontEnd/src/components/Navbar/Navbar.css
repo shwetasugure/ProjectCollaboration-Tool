@@ -1,0 +1,123 @@
+/* Base Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 15px 20px;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    margin-right: 20px;
+  }
+  
+  .navbar a:hover {
+    color: #4caf50;
+  }
+  
+  .navbar-brand a {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .navbar-links {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-notifications {
+    position: relative;
+  }
+  
+  .notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #ff5733;
+    color: white;
+    font-size: 12px;
+    border-radius: 50%;
+    padding: 3px 7px;
+  }
+  
+  /* Profile Dropdown */
+  .navbar-profile {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .profile-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #444;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 8px;
+  }
+  
+  .profile-dropdown a {
+    display: block;
+    padding: 5px 10px;
+    color: white;
+  }
+  
+  .profile-dropdown a:hover {
+    background-color: #4caf50;
+  }
+  
+  .navbar-profile:hover .profile-dropdown {
+    display: block;
+  }
+  
+  /* Mobile Menu */
+  .navbar-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .hamburger-icon {
+    color: white;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .navbar-links {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: #333;
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px 0;
+    }
+  
+    .navbar-links.open {
+      display: flex;
+    }
+  
+    .navbar-links a {
+      margin-right: 0;
+      margin-left: 20px;
+      padding: 10px 0;
+      width: 100%;
+    }
+  
+    .navbar-toggle {
+      display: block;
+    }
+  
+    .navbar-profile {
+      margin-left: 20px;
+    }
+  }
+  
