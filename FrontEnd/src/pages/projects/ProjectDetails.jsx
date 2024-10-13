@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CreateTaskForm from '../../components/tasks/CreateTask';
 import TaskList from '../../components/tasks/TaskList';
 import KanbanView from '../../components/tasks/TaskKanban';
-import SearchBar from '../../components/Searchbar/SearchBar'
+import SearchBar from '../../components/Searchbar/SearchBar';
 import Modal from '../../components/Modal/modal'; // Import the Modal component
 import './ProjectDetails.scss';
 

@@ -1,35 +1,78 @@
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Darker overlay for better contrast */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears above other elements */
+  animation: fadeIn 0.3s; /* Fade-in animation */
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px; /* Increased padding for spaciousness */
+  border-radius: 10px; /* More rounded corners */
+  width: 90%; /* Full width for smaller screens */
+  max-width: 500px; /* Maximum width for larger screens */
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  animation: slideIn 0.3s ease; /* Slide-in animation */
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #333; /* Darker color for contrast */
+  cursor: pointer;
+  transition: color 0.3s; /* Smooth color transition */
+
+  &:hover {
+    color: #039BE5; /* Change color on hover */
   }
-  
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 500px;
-    max-width: 100%;
-    position: relative;
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
+  to {
+    opacity: 1;
   }
-  
-  .add-project-btn {
-    /* Add your styles for the Add Project button */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px); /* Slide from above */
+    opacity: 0;
   }
-  
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Add styles for buttons in the modal if needed */
+.add-project-btn {
+  padding: 12px 20px;
+  background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+  color: white; /* White text color */
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s; /* Transition for button hover effects */
+
+  &:hover {
+    background: linear-gradient(to right, #2575fc, #6a11cb); /* Reverse gradient on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+  }
+}

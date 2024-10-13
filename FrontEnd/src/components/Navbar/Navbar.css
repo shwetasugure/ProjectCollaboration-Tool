@@ -1,123 +1,125 @@
-/* Base Styles */
+/* Navbar Styles */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 15px 20px;
-    font-family: 'Arial', sans-serif;
-    position: relative;
-  }
-  
-  .navbar a {
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
-    margin-right: 20px;
-  }
-  
-  .navbar a:hover {
-    color: #4caf50;
-  }
-  
-  .navbar-brand a {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #007bff; /* Navbar background color */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  font-family: 'Poppins', sans-serif; /* Match font family */
+  transition: background-color 0.3s;
+  position: relative; /* Ensure positioning for dropdowns */
+}
+
+/* Brand Styles */
+.navbar-brand a {
+  color: #ffffff;
+  font-size: 1.8rem; /* Larger font size for the brand */
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+/* Mobile Toggle Styles */
+.navbar-toggle {
+  display: none; /* Hide by default */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.hamburger-icon {
+  font-size: 1.5rem;
+  color: white;
+}
+
+/* Link Styles */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Space between links */
+}
+
+.navbar-links a {
+  color: #ffffff; /* Link color */
+  text-decoration: none; /* No underline */
+  font-size: 1.2rem; /* Font size for links */
+  padding: 5px 10px;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.navbar-links a:hover {
+  color: #ffd700; /* Gold color on hover */
+  transform: scale(1.1); /* Slight scaling effect */
+}
+
+/* Notification Icon */
+.navbar-notifications {
+  position: relative; /* Positioning for the badge */
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: #ff4757; /* Red for the notification badge */
+  color: white;
+  border-radius: 50%;
+  padding: 3px 7px;
+  font-size: 0.9rem;
+}
+
+/* Profile Dropdown */
+.navbar-profile {
+  position: relative; /* Positioning for the dropdown */
+}
+
+.profile-dropdown {
+  display: none; /* Hidden by default */
+  position: absolute;
+  right: 0;
+  background-color: #fff; /* Dropdown background color */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 1; /* Ensure it sits above other elements */
+}
+
+.navbar-profile:hover .profile-dropdown {
+  display: block; /* Show dropdown on hover */
+}
+
+.profile-dropdown a {
+  display: block;
+  padding: 10px 20px;
+  color: #333; /* Text color */
+  text-decoration: none;
+}
+
+.profile-dropdown a:hover {
+  background-color: #f0f4fd; /* Light hover effect */
+}
+
+/* Mobile Menu Styles */
+.navbar-links.open {
+  display: flex; /* Show menu when open */
+  flex-direction: column; /* Stack links vertically */
+  position: absolute;
+  top: 100%; /* Align below navbar */
+  left: 0;
+  right: 0;
+  background-color: #007bff; /* Background color for mobile menu */
+  z-index: 10; /* Sit above other elements */
+}
+
+.navbar-links.open a {
+  padding: 10px 20px; /* More padding for mobile links */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .navbar-links {
-    display: flex;
-    align-items: center;
+    display: none; /* Hide links by default */
   }
-  
-  .navbar-notifications {
-    position: relative;
-  }
-  
-  .notification-badge {
-    position: absolute;
-    top: -5px;
-    right: -10px;
-    background-color: #ff5733;
-    color: white;
-    font-size: 12px;
-    border-radius: 50%;
-    padding: 3px 7px;
-  }
-  
-  /* Profile Dropdown */
-  .navbar-profile {
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .profile-dropdown {
-    display: none;
-    position: absolute;
-    right: 0;
-    background-color: #444;
-    padding: 10px;
-    border-radius: 8px;
-    margin-top: 8px;
-  }
-  
-  .profile-dropdown a {
-    display: block;
-    padding: 5px 10px;
-    color: white;
-  }
-  
-  .profile-dropdown a:hover {
-    background-color: #4caf50;
-  }
-  
-  .navbar-profile:hover .profile-dropdown {
-    display: block;
-  }
-  
-  /* Mobile Menu */
+
   .navbar-toggle {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
+    display: block; /* Show hamburger icon on mobile */
   }
-  
-  .hamburger-icon {
-    color: white;
-  }
-  
-  /* Mobile Responsive */
-  @media (max-width: 768px) {
-    .navbar-links {
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      background-color: #333;
-      display: none;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 10px 0;
-    }
-  
-    .navbar-links.open {
-      display: flex;
-    }
-  
-    .navbar-links a {
-      margin-right: 0;
-      margin-left: 20px;
-      padding: 10px 0;
-      width: 100%;
-    }
-  
-    .navbar-toggle {
-      display: block;
-    }
-  
-    .navbar-profile {
-      margin-left: 20px;
-    }
-  }
-  
+}

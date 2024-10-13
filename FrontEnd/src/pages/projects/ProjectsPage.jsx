@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import CreateProject from '../../components/CreateProject/CreateProject';
 import ProjectList from '../../components/ProjectList/ProjectList';
-import Modal from '../../components/Modal/modal'
-// import './ProjectsPage.scss';
+import Modal from '../../components/Modal/modal';
+import Navbar from '../../components/Navbar/Navbar'; // Import the Navbar
+import './ProjectsPage.scss'; // Import the updated styles
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState([
@@ -41,9 +42,14 @@ const ProjectsPage = () => {
 
   return (
     <div className="project-dashboard">
-      <button className="add-project-btn" onClick={openModal}>
-        + Add Project
-      </button>
+      <Navbar /> {/* Include the Navbar here */}
+
+      <div className="header-container">
+        <h1>Projects</h1>
+        <button className="add-project-btn" onClick={openModal}>
+          + Add Project
+        </button>
+      </div>
 
       <ProjectList
         projects={projects}

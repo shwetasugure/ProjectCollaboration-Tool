@@ -10,11 +10,12 @@ import ProjectForm from './pages/projects/ProjectForm'
 import TaskList from './components/tasks/TaskList'
 import TaskDetails from './components/tasks/TaskDetails'
 import ProjectsPage from './pages/projects/ProjectsPage';
+
 function App() {
   return (
     <Router>
       <Routes>
-        
+          <Route path="navbar" element={<Navbar/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/Projects" element={<ProjectsPage />} />

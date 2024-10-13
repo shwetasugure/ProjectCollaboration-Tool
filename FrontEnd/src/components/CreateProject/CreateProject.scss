@@ -1,40 +1,67 @@
 .create-project-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+  background: white; /* Use white background */
+  padding: 30px; /* Increased padding for a more spacious layout */
+  border-radius: 10px; /* More rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+  margin-top: 20px;
+  max-width: 600px; /* Maximum width for better responsiveness */
+  margin: 20px auto; /* Center the container */
+  font-family: 'Poppins', sans-serif; /* Consistent font */
   
-    h2 {
-      color: #039BE5;
+  h2 {
+    color: #039BE5; /* Primary color for the title */
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px; /* Space below the heading */
+    font-size: 2rem; /* Larger font size */
+  }
+
+  .form-group {
+    margin-bottom: 20px; /* More space between form groups */
+
+    label {
+      display: block;
+      font-weight: 600; /* Bolder font for labels */
+      color: #616161; /* Darker color for labels */
+      margin-bottom: 5px; /* Space below the label */
     }
-  
-    .form-group {
-      margin-bottom: 15px;
-  
-      label {
-        display: block;
-        font-weight: 500;
-        color: #616161;
-      }
-  
-      input, textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #E0E0E0;
-        border-radius: 4px;
-        margin-top: 5px;
-        font-size: 14px;
-      }
-  
-      textarea {
-        resize: none;
-        height: 100px;
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px; /* Increased padding for comfort */
+      border: 1px solid #E0E0E0; /* Light border color */
+      border-radius: 8px; /* More rounded corners */
+      margin-top: 5px;
+      font-size: 16px; /* Larger font size for readability */
+      transition: border-color 0.3s; /* Transition for border color */
+
+      &:focus {
+        border-color: #039BE5; /* Change border color on focus */
+        outline: none; /* Remove default outline */
+        box-shadow: 0 0 5px rgba(3, 155, 229, 0.5); /* Light shadow on focus */
       }
     }
-  
-    button {
-      margin-top: 10px;
+
+    textarea {
+      resize: none; /* Prevent resizing */
+      height: 120px; /* Increased height for better visibility */
     }
   }
-  
+
+  button {
+    width: 100%; /* Full width button */
+    padding: 12px; /* Increased padding for comfort */
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 1.2rem; /* Larger font size */
+    cursor: pointer; /* Pointer on hover */
+    transition: background 0.3s, transform 0.2s; /* Smooth transition for hover effects */
+
+    &:hover {
+      background: linear-gradient(to right, #2575fc, #6a11cb); /* Reverse gradient on hover */
+      transform: translateY(-2px); /* Lift effect on hover */
+    }
+  }
+}
