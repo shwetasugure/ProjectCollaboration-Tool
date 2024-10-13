@@ -10,7 +10,7 @@ import ProjectForm from './pages/projects/ProjectForm'
 import TaskList from './components/tasks/TaskList'
 import TaskDetails from './components/tasks/TaskDetails'
 import ProjectsPage from './pages/projects/ProjectsPage';
-
+import AnalyticsDashboard from './pages/analytics/AnalyticsDashboard'; // Import the AnalyticsDashboard component
 function App() {
   return (
     <Router>
@@ -24,6 +24,8 @@ function App() {
           <Route path="/projects/projectDetail" element={<ProjectDetails/>} />
           <Route path="/tasks" element={<TaskList />} />
           <Route path="/tasks/:id" element={<TaskDetails />} />
+        <Route path="/analytics" component={AnalyticsDashboard} /> // Adjust the route as necessary
+        <Route path="/dashboard" component={Dashboard} />
         </Routes>
      
     </Router>

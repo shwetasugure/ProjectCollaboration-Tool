@@ -1,5 +1,6 @@
 // src/components/auth/Register.jsx
 import React, { useState } from 'react';
+import './Register.scss'; // Import the SCSS file
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -15,29 +16,35 @@ const Register = () => {
     <div className="register-container">
       <h2>Create an Account</h2>
       <form onSubmit={handleRegister}>
-        <input 
-          type="text" 
-          placeholder="Name" 
-          value={name} 
-          onChange={(e) => setName(e.target.value)} 
-          required 
-        />
-        <input 
-          type="email" 
-          placeholder="Email" 
-          value={email} 
-          onChange={(e) => setEmail(e.target.value)} 
-          required 
-        />
-        <input 
-          type="password" 
-          placeholder="Password" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-          required 
-        />
+        <div className="input-group">
+          <input 
+            type="text" 
+            placeholder="Name" 
+            value={name} 
+            onChange={(e) => setName(e.target.value)} 
+            required 
+          />
+        </div>
+        <div className="input-group">
+          <input 
+            type="email" 
+            placeholder="Email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            required 
+          />
+        </div>
+        <div className="input-group">
+          <input 
+            type="password" 
+            placeholder="Password" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            required 
+          />
+        </div>
         <button type="submit">Register</button>
-        <p>Already have an account? <a href="#">Login</a></p>
+        <p className="redirect">Already have an account? <a href="/login">Login</a></p>
       </form>
     </div>
   );

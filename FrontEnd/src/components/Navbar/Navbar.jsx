@@ -39,6 +39,7 @@ const Navbar = () => {
       <div className={`navbar-links ${isMobileMenuOpen ? 'open' : ''}`}>
         <Link to="/projects">Projects</Link>
         <Link to="/tasks">Tasks</Link>
+        <Link to="/analytics">Analytics</Link>
         <Link to="/">Dashboard</Link>
 
         {/* Notification Icon */}
@@ -53,8 +54,8 @@ const Navbar = () => {
         <div className="navbar-profile">
           <i className="fas fa-user-circle"></i>
           <div className="profile-dropdown">
-            <Link to="/profile">Profile</Link>
-            <Link to="/logout">Logout</Link>
+            <Link to="/Login">Login</Link>
+            <Link to="/Register">Register</Link>
           </div>
         </div>
       </div>
