@@ -3,10 +3,11 @@ from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.http import HttpResponse
 from tasks.views import UserCreateView
+from django.shortcuts import render
 
 # Define a simple view for the root URL
 def home(request):
-    return HttpResponse("Welcome to the Project Collaboration Tool!")
+    return render(request, 'chat.html')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

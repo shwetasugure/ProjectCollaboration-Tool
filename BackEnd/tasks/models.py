@@ -1,14 +1,15 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils import timezone
 
 class Project(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='owned_projects')
     collaborators = models.ManyToManyField(User, related_name='collaborating_projects', blank=True)
-    
+
     def __str__(self):
-        return self.name
+        return self.name + " Project id: " + str(self.id)
 
 class Task(models.Model):
     STATUS_CHOICES = [
@@ -32,6 +33,14 @@ class Task(models.Model):
     priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES, default='medium')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    complete_timestamp = models.DateTimeField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.status == 'completed' and not self.complete_timestamp:
+            self.complete_timestamp = timezone.now()
+        elif self.status != 'completed':
+            self.complete_timestamp = None
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.title
+        return self.title + " project id: " + str(self.project.id)

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+</head>
+<body>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        
+        body {
+            background-color: black;
+            color: white;
+        }
+    </style>
+    <h1>Chat</h1>
+    <script>
+       const chatSocket = new WebSocket('ws://' + window.location.host + '/ws/chat/');
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            const message = data['message'];
+            console.log(message);
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly', e);
+        };
+
+        // Send message to server
+        function sendMessage(message) {
+            chatSocket.send(JSON.stringify({
+                'message': message
+            }));
+        }
+
+    </script>
+</body>
+</html>
