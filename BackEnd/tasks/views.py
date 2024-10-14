@@ -1,13 +1,18 @@
 from rest_framework import viewsets, generics
-from .models import Project, Task
-from .serializers import ProjectSerializer, TaskSerializer
+from .models import Project, Task, Comment
+from .serializers import ProjectSerializer, TaskSerializer, CommentSerializer
 from rest_framework.permissions import IsAuthenticated, BasePermission
 from rest_framework.exceptions import PermissionDenied
+from django.shortcuts import get_object_or_404
 
 from .serializers import UserSerializer
 from django.contrib.auth.models import User
 
 from django.db.models import Q
+
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
+import json
 
 class ProjectViewSet(viewsets.ModelViewSet):
     serializer_class = ProjectSerializer
@@ -54,3 +59,76 @@ class UserListView(generics.ListAPIView):
     serializer_class = UserSerializer
     def get_queryset(self):
         return User.objects.filter(~Q(id=self.request.user.id))
+
+class IsProjectOwnerOrCollaborator(BasePermission):
+    def has_permission(self, request, view):
+        task_id = view.kwargs.get('task_id')
+        task = get_object_or_404(Task, id=task_id)
+        return task.project.owner == request.user or task.project.collaborators.filter(id=request.user.id).exists()
+
+
+class IsCommentAuthor(BasePermission):
+    def has_object_permission(self, request, view, obj):
+        # Check if the comment's author is the request user
+        return obj.author == request.user
+
+
+
+class TaskCommentView(viewsets.ModelViewSet):
+    serializer_class = CommentSerializer
+    permission_classes = [IsAuthenticated, IsProjectOwnerOrCollaborator, IsCommentAuthor]
+    def get_queryset(self):
+        task_id = self.kwargs.get('task_id')
+        return Comment.objects.filter(task__id=task_id)
+
+    def perform_create(self, serializer):
+        task_id = self.kwargs.get('task_id')
+        task = get_object_or_404(Task, id=task_id)
+        comment = serializer.save(author=self.request.user, task=task)
+
+        # Send a WebSocket message to the task's room
+        channel_layer = get_channel_layer()
+        async_to_sync(channel_layer.group_send)(
+            f"task_{task_id}",
+            {
+                "type": "comment",
+                "msgtype": "comment.created",
+                "message": json.dumps(CommentSerializer(comment).data),
+            }
+        )
+
+    def perform_update(self, serializer):
+        comment = serializer.save()
+        # Send a WebSocket message when a comment is updated
+        channel_layer = get_channel_layer()
+        task_id = comment.task.id
+        async_to_sync(channel_layer.group_send)(
+            f"task_{task_id}",
+            {
+                "type": "comment",
+                "msgtype": "comment.updated",
+                "message": json.dumps(CommentSerializer(comment).data),
+            }
+        )
+
+    def perform_destroy(self, instance):
+        task_id = instance.task.id
+        # Send a WebSocket message when a comment is deleted
+        channel_layer = get_channel_layer()
+        async_to_sync(channel_layer.group_send)(
+            f"task_{task_id}",
+            {
+                "type": "comment",
+                "msgtype": "comment.deleted",
+                "message": json.dumps(CommentSerializer(instance).data),
+            }
+        )
+        # Actually delete the comment
+        instance.delete()
+
+    def get_permissions(self):
+        if self.action == 'destroy':
+            self.permission_classes = [IsAuthenticated, IsCommentAuthor]
+        else:
+            self.permission_classes = [IsAuthenticated, IsProjectOwnerOrCollaborator]
+        return super(TaskCommentView, self).get_permissions()

@@ -18,7 +18,13 @@
     </style>
     <h1>Chat</h1>
     <script>
-       const chatSocket = new WebSocket('ws://' + window.location.host + '/ws/chat/');
+        const COMMENT = 'comment';
+        const CHANGE_PRIORITY = 'change_priority';
+        const CHANGE_STATUS = 'change_status';
+        const CHANGE_ASSIGNEE = 'change_assignee';
+
+
+        const chatSocket = new WebSocket('ws://' + window.location.host + '/ws/chat/13/');
 
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
@@ -33,6 +39,7 @@
         // Send message to server
         function sendMessage(message) {
             chatSocket.send(JSON.stringify({
+                'type': COMMENT,
                 'message': message
             }));
         }

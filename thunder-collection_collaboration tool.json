@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "collaboration tool",
     "collectionId": "eaf3474e-ec1e-49c5-92ac-02fb2eacf075",
-    "dateExported": "2024-10-12T15:49:17.119Z",
+    "dateExported": "2024-10-14T05:01:11.577Z",
     "version": "1.2",
     "folders": [
         {
@@ -37,11 +37,11 @@
             "method": "GET",
             "sortNum": 10000,
             "created": "2024-10-12T14:17:48.700Z",
-            "modified": "2024-10-12T15:39:48.910Z",
+            "modified": "2024-10-12T19:59:00.829Z",
             "headers": [
                 {
                     "name": "Authorization",
-                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzM5NTgwLCJpYXQiOjE3Mjg3NDc1ODAsImp0aSI6IjRmNmQ1OTkzNjRkNDQxZjhiZTg4NWMzMDhiODk1ZmFmIiwidXNlcl9pZCI6Mn0.Zv1xkPmgPnGFuvVCWfpBSwgypKERSrWyJK7VjDkQ0xk"
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzQxMjE3LCJpYXQiOjE3Mjg3NDkyMTcsImp0aSI6IjQ3MzljNzNiMjkyNzQyNDk4NjQ0MzE1NDI3NTczY2UyIiwidXNlcl9pZCI6NH0.qaMlFsxKwC6_a5SS3jxYoVBzZsbNVDs3YgpExTq7FDo"
                 }
             ]
         },
@@ -54,11 +54,11 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2024-10-12T14:39:15.734Z",
-            "modified": "2024-10-12T15:39:40.142Z",
+            "modified": "2024-10-12T16:06:57.883Z",
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"username\": \"metal\",\n  \"password\": \"123123\"\n}",
+                "raw": "{\n  \"username\": \"metal3\",\n  \"password\": \"123123\"\n}",
                 "form": []
             }
         },
@@ -84,15 +84,15 @@
             "colId": "eaf3474e-ec1e-49c5-92ac-02fb2eacf075",
             "containerId": "0599566f-4434-41e2-a199-290c244f9e30",
             "name": "add collaborators",
-            "url": "http://localhost:8000/api/project/1/",
+            "url": "http://localhost:8000/api/project/3/",
             "method": "PUT",
             "sortNum": 20000,
             "created": "2024-10-12T14:55:43.286Z",
-            "modified": "2024-10-12T14:59:17.874Z",
+            "modified": "2024-10-12T17:41:41.528Z",
             "headers": [
                 {
                     "name": "Authorization",
-                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzM3MDA5LCJpYXQiOjE3Mjg3NDUwMDksImp0aSI6ImM5YWRhNjZjMjAxOTRiMzM5ZmE2YmFlMGJlMWQ0NDJhIiwidXNlcl9pZCI6Mn0.fp9cJFaV5dd-5p40PuhNMzYsqIWvAuU3pVvuDG6mt-U"
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzQxMjE3LCJpYXQiOjE3Mjg3NDkyMTcsImp0aSI6IjQ3MzljNzNiMjkyNzQyNDk4NjQ0MzE1NDI3NTczY2UyIiwidXNlcl9pZCI6NH0.qaMlFsxKwC6_a5SS3jxYoVBzZsbNVDs3YgpExTq7FDo"
                 }
             ],
             "body": {
@@ -102,41 +102,19 @@
             }
         },
         {
-            "_id": "690fd6d1-b120-4218-ab28-e1c9aec7e4e7",
-            "colId": "eaf3474e-ec1e-49c5-92ac-02fb2eacf075",
-            "containerId": "7790798d-9662-4828-a1d7-b7d2f506e013",
-            "name": "post projects",
-            "url": "http://localhost:8000/api/project/",
-            "method": "POST",
-            "sortNum": 30000,
-            "created": "2024-10-12T14:20:38.060Z",
-            "modified": "2024-10-12T14:57:18.403Z",
-            "headers": [
-                {
-                    "name": "Authorization",
-                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzM3MDA5LCJpYXQiOjE3Mjg3NDUwMDksImp0aSI6ImM5YWRhNjZjMjAxOTRiMzM5ZmE2YmFlMGJlMWQ0NDJhIiwidXNlcl9pZCI6Mn0.fp9cJFaV5dd-5p40PuhNMzYsqIWvAuU3pVvuDG6mt-U"
-                }
-            ],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"name\": \"Project Name\",\n  \"description\": \"Project Description\"\n}",
-                "form": []
-            }
-        },
-        {
             "_id": "05a27bd3-b612-493e-bdfb-9550b18958c1",
             "colId": "eaf3474e-ec1e-49c5-92ac-02fb2eacf075",
             "containerId": "0599566f-4434-41e2-a199-290c244f9e30",
             "name": "delete",
-            "url": "http://localhost:8000/api/project/4/",
+            "url": "http://localhost:8000/api/project/3/",
             "method": "DELETE",
             "sortNum": 30000,
             "created": "2024-10-12T15:38:31.851Z",
-            "modified": "2024-10-12T15:39:58.080Z",
+            "modified": "2024-10-12T20:11:28.555Z",
             "headers": [
                 {
                     "name": "Authorization",
-                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzM5NTgwLCJpYXQiOjE3Mjg3NDc1ODAsImp0aSI6IjRmNmQ1OTkzNjRkNDQxZjhiZTg4NWMzMDhiODk1ZmFmIiwidXNlcl9pZCI6Mn0.Zv1xkPmgPnGFuvVCWfpBSwgypKERSrWyJK7VjDkQ0xk"
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzQxMjE3LCJpYXQiOjE3Mjg3NDkyMTcsImp0aSI6IjQ3MzljNzNiMjkyNzQyNDk4NjQ0MzE1NDI3NTczY2UyIiwidXNlcl9pZCI6NH0.qaMlFsxKwC6_a5SS3jxYoVBzZsbNVDs3YgpExTq7FDo"
                 }
             ]
         },
@@ -173,7 +151,153 @@
                     "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzM5NTgwLCJpYXQiOjE3Mjg3NDc1ODAsImp0aSI6IjRmNmQ1OTkzNjRkNDQxZjhiZTg4NWMzMDhiODk1ZmFmIiwidXNlcl9pZCI6Mn0.Zv1xkPmgPnGFuvVCWfpBSwgypKERSrWyJK7VjDkQ0xk"
                 }
             ]
+        },
+        {
+            "_id": "690fd6d1-b120-4218-ab28-e1c9aec7e4e7",
+            "colId": "eaf3474e-ec1e-49c5-92ac-02fb2eacf075",
+            "containerId": "0599566f-4434-41e2-a199-290c244f9e30",
+            "name": "post projects",
+            "url": "http://localhost:8000/api/project/",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-10-12T14:20:38.060Z",
+            "modified": "2024-10-12T16:07:41.650Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzQxMjE3LCJpYXQiOjE3Mjg3NDkyMTcsImp0aSI6IjQ3MzljNzNiMjkyNzQyNDk4NjQ0MzE1NDI3NTczY2UyIiwidXNlcl9pZCI6NH0.qaMlFsxKwC6_a5SS3jxYoVBzZsbNVDs3YgpExTq7FDo"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Project Name\",\n  \"description\": \"Project Description\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "c310df34-39d3-4f51-8402-f39eeac6fa1a",
+            "colId": "eaf3474e-ec1e-49c5-92ac-02fb2eacf075",
+            "containerId": "5cf3cbf2-c308-4700-81cf-48a6230143d5",
+            "name": "create tasks",
+            "url": "http://localhost:8000/api/project/2/task/",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-10-12T16:02:35.105Z",
+            "modified": "2024-10-12T20:17:31.317Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzQxMjE3LCJpYXQiOjE3Mjg3NDkyMTcsImp0aSI6IjQ3MzljNzNiMjkyNzQyNDk4NjQ0MzE1NDI3NTczY2UyIiwidXNlcl9pZCI6NH0.qaMlFsxKwC6_a5SS3jxYoVBzZsbNVDs3YgpExTq7FDo"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"task 1\",\n  \"due_date\": \"2024-10-16\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "fe54084f-e3dd-42c7-bbdd-a0ed7bf8a2c2",
+            "colId": "eaf3474e-ec1e-49c5-92ac-02fb2eacf075",
+            "containerId": "5cf3cbf2-c308-4700-81cf-48a6230143d5",
+            "name": "get all tasks",
+            "url": "http://localhost:8000/api/project/2/task/",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-10-12T16:09:15.544Z",
+            "modified": "2024-10-12T20:16:16.613Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzQxMjE3LCJpYXQiOjE3Mjg3NDkyMTcsImp0aSI6IjQ3MzljNzNiMjkyNzQyNDk4NjQ0MzE1NDI3NTczY2UyIiwidXNlcl9pZCI6NH0.qaMlFsxKwC6_a5SS3jxYoVBzZsbNVDs3YgpExTq7FDo"
+                }
+            ]
+        },
+        {
+            "_id": "dd033723-80e2-47d0-901a-be5616038be6",
+            "colId": "eaf3474e-ec1e-49c5-92ac-02fb2eacf075",
+            "containerId": "0599566f-4434-41e2-a199-290c244f9e30",
+            "name": "get specific project",
+            "url": "http://localhost:8000/api/project/2",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-10-12T17:50:32.175Z",
+            "modified": "2024-10-12T17:51:03.085Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzQxMjE3LCJpYXQiOjE3Mjg3NDkyMTcsImp0aSI6IjQ3MzljNzNiMjkyNzQyNDk4NjQ0MzE1NDI3NTczY2UyIiwidXNlcl9pZCI6NH0.qaMlFsxKwC6_a5SS3jxYoVBzZsbNVDs3YgpExTq7FDo"
+                }
+            ]
+        },
+        {
+            "_id": "58764f5e-919b-4e12-8ace-3b87ec5c16eb",
+            "colId": "eaf3474e-ec1e-49c5-92ac-02fb2eacf075",
+            "containerId": "5cf3cbf2-c308-4700-81cf-48a6230143d5",
+            "name": "get specific tasks",
+            "url": "http://localhost:8000/api/project/2/task/1",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-10-12T19:59:19.403Z",
+            "modified": "2024-10-12T19:59:51.155Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzQxMjE3LCJpYXQiOjE3Mjg3NDkyMTcsImp0aSI6IjQ3MzljNzNiMjkyNzQyNDk4NjQ0MzE1NDI3NTczY2UyIiwidXNlcl9pZCI6NH0.qaMlFsxKwC6_a5SS3jxYoVBzZsbNVDs3YgpExTq7FDo"
+                }
+            ]
+        },
+        {
+            "_id": "f32c97a3-c6d7-41a9-9597-82a1afcc1676",
+            "colId": "eaf3474e-ec1e-49c5-92ac-02fb2eacf075",
+            "containerId": "5cf3cbf2-c308-4700-81cf-48a6230143d5",
+            "name": "delete task",
+            "url": "http://localhost:8000/api/project/6/task/6/",
+            "method": "DELETE",
+            "sortNum": 100000,
+            "created": "2024-10-12T20:16:28.389Z",
+            "modified": "2024-10-12T20:18:08.468Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzQxMjE3LCJpYXQiOjE3Mjg3NDkyMTcsImp0aSI6IjQ3MzljNzNiMjkyNzQyNDk4NjQ0MzE1NDI3NTczY2UyIiwidXNlcl9pZCI6NH0.qaMlFsxKwC6_a5SS3jxYoVBzZsbNVDs3YgpExTq7FDo"
+                }
+            ]
+        },
+        {
+            "_id": "430eb8f1-4412-46a5-b844-9a4f7bd17718",
+            "colId": "eaf3474e-ec1e-49c5-92ac-02fb2eacf075",
+            "containerId": "5cf3cbf2-c308-4700-81cf-48a6230143d5",
+            "name": "update task",
+            "url": "http://localhost:8000/api/project/2/task/4/",
+            "method": "PUT",
+            "sortNum": 110000,
+            "created": "2024-10-12T20:18:33.221Z",
+            "modified": "2024-10-12T20:22:40.938Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzQxMjE3LCJpYXQiOjE3Mjg3NDkyMTcsImp0aSI6IjQ3MzljNzNiMjkyNzQyNDk4NjQ0MzE1NDI3NTczY2UyIiwidXNlcl9pZCI6NH0.qaMlFsxKwC6_a5SS3jxYoVBzZsbNVDs3YgpExTq7FDo"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"task 1\",\n  \"description\": \"fire :🔥🔥\",\n  \"assigned_user\": null,\n  \"status\": \"in_progress\",\n  \"due_date\": \"2024-10-16\",\n  \"priority\": \"high\",\n  \"project\": 2,\n  \"complete_timestamp\": null\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "d9adbb46-9b28-42b9-990e-3411b38996f4",
+            "colId": "eaf3474e-ec1e-49c5-92ac-02fb2eacf075",
+            "containerId": "",
+            "name": "comments",
+            "url": "",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2024-10-13T07:47:26.788Z",
+            "modified": "2024-10-13T07:47:26.788Z",
+            "headers": []
         }
     ],
-    "ref": "QmLB-3ww854JcKB1ggpVHrRXu-SObRXHZHX4a6d7cx2xYBdXCIQnl_S_1cOvj-KTwEGYPZHXWyMPI4bt6b8ZnQ"
+    "ref": "QmLB-3ww854JcKB1ggpVHrPukran-VoeTRQ3yJqy7biWf0m-BjCnVudO-BkNB4S15GFf6n12G8CR768ddmm8eQ"
 }
