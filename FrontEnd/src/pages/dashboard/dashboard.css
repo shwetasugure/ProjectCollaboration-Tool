@@ -1,101 +1,108 @@
-/* Dashboard Container Styles */
 .dashboard-container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  /* Background */
-  body {
-    background: linear-gradient(135deg, #f0f4f8, #d9e2ec); /* Lighter gradient background */
-  }
-  
-  h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    text-align: center;
-    color: #333;
-  }
-  
-  /* Summary Cards Container */
-  .summary-cards {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-    margin-bottom: 40px;
-  }
-  
-  /* Card Styling with Gradient Backgrounds */
-  .card {
-    background-color: #fff;
-    padding: 25px;
-    border-radius: 10px;
-    text-align: center;
-    width: 250px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Added shadow */
-    transition: transform 0.2s, box-shadow 0.2s;
-    color: white;
-  }
-  
-  .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
-  }
-  
-  /* Gradient colors for each card */
-  .card-projects {
-    background: linear-gradient(to right, #6a11cb, #2575fc); /* Purple to blue */
-  }
-  
-  .card-tasks {
-    background: linear-gradient(to right, #ff512f, #dd2476); /* Red to pink */
-  }
-  
-  .card-overdue {
-    background: linear-gradient(to right, #ff9a44, #fc6076); /* Orange to pink */
-  }
-  
-  /* Text and Icon Styles in Cards */
-  .card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: white;
-  }
-  
-  .card p {
-    font-size: 2.5rem;
-    margin: 0;
-    font-weight: bold;
-  }
-  
-  .card small {
-    display: block;
-    margin-top: 10px;
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.7);
-  }
-  
-  /* Center View Projects Button */
-  .view-projects-btn {
-    display: block;
-    margin: 0 auto;
-    width: fit-content;
-    margin-top: 30px;
-    padding: 12px 24px;
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 25px;
-    text-decoration: none;
-    text-align: center;
-    font-size: 1.2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s, box-shadow 0.3s;
-  }
-  
-  .view-projects-btn:hover {
-    background-color: #0056b3;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-  }
-  
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: 100%;
+}
+
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 80px;
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+
+.summary-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.card p {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.view-details {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  display: block;
+}
+
+.charts {
+  display: flex;
+  gap: 20px;
+}
+
+.area-chart,
+.notifications-panel {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+.notifications-panel ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.notifications-panel ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.notifications-panel ul li span {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+
+.view-projects-btn {
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+  margin-top: 30px;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 25px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.view-projects-btn:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  background-color: #0052aa;
+}

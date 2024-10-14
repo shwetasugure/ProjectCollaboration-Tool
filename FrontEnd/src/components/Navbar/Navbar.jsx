@@ -37,22 +37,23 @@ const Navbar = () => {
       </div>
 
       <div className={`navbar-links ${isMobileMenuOpen ? 'open' : ''}`}>
-        <Link to="/projects">Projects</Link>
-        <Link to="/tasks">Tasks</Link>
-        <Link to="/analytics">Analytics</Link>
         <Link to="/">Dashboard</Link>
+        <Link to="/projects">Projects</Link>
+        {/* <Link to="/tasks">Tasks</Link>
+        <Link to="/analytics">Analytics</Link> */}
+        
 
         {/* Notification Icon */}
-        <div className="navbar-notifications">
+       
           <Link to="/notifications">
             <i className="fas fa-bell"></i>
             {unreadCount > 0 && <span className="notification-badge">{unreadCount}</span>}
           </Link>
-        </div>
+        
 
         {/* User Profile Dropdown */}
         <div className="navbar-profile">
-          <i className="fas fa-user-circle"></i>
+          <i className="fas fa-user-circle"  style={{  margin:'3px' ,fontSize: '27px' }}></i>
           <div className="profile-dropdown">
             <Link to="/Login">Login</Link>
             <Link to="/Register">Register</Link>

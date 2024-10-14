@@ -41,8 +41,12 @@ const ProjectsPage = () => {
   };
 
   return (
+
+    <>
+    <Navbar />
+    
     <div className="project-dashboard">
-      <Navbar /> {/* Include the Navbar here */}
+       
 
       <div className="header-container">
         <h1>Projects</h1>
@@ -67,6 +71,7 @@ const ProjectsPage = () => {
         </Modal>
       )}
     </div>
+    </>
   );
 };
 

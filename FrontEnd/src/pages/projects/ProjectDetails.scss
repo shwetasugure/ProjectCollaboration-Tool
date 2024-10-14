@@ -59,7 +59,7 @@
     cursor: pointer;
     margin-bottom: 20px;
     font-size: 1.2rem; /* Increased font size for visibility */
-    transition: background 0.3s, transform 0.2s; /* Transition effects */
+    transition:  0.3s, transform 0.2s; /* Transition effects */
 
     &:hover {
       background: linear-gradient(to right, #2575fc, #6a11cb); /* Reverse gradient on hover */
