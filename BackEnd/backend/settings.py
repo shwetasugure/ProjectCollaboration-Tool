@@ -104,11 +104,20 @@ TEMPLATES = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'taskmanager',
+        'USER': 'postgres',
+        'PASSWORD': 'supersecret',
+        'HOST': '127.0.0.1',  # This is the service name from your Docker Compose file
+        'PORT': '5432',
     }
 }
 
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'localhost:9200'
+    },
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

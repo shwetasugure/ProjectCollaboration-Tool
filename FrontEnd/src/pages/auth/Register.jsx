@@ -29,8 +29,8 @@ const Register = () => {
       console.log("Registration successful!");
       const loginResponse = await api.post("/token/", { "username": name, password });
       const data = await loginResponse;
-      localStorage.setItem("access", data.access);
-      localStorage.setItem("refresh", data.refresh);
+      localStorage.setItem("access", data.data.access);
+      localStorage.setItem("refresh", data.data.refresh);
       console.log("Logged in successfully!");
       navigate('/');
     } catch (error) {

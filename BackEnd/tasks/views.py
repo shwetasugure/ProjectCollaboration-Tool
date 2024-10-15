@@ -14,6 +14,19 @@ from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 import json
 
+from django_elasticsearch_dsl_drf.viewsets import DocumentViewSet
+from .documents import TaskDocument
+from django_elasticsearch_dsl_drf.filter_backends import FilteringFilterBackend, SearchFilterBackend
+
+class TaskSearchView(DocumentViewSet):
+    document = TaskDocument
+    serializer_class = TaskSerializer
+    filter_backends = [SearchFilterBackend, FilteringFilterBackend]
+    search_fields = ('title', 'description')
+
+    def get_queryset(self):
+        return TaskDocument.search()
+
 class ProjectViewSet(viewsets.ModelViewSet):
     serializer_class = ProjectSerializer
     permission_classes = [IsAuthenticated]
