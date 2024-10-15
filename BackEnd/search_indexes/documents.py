@@ -1,6 +1,6 @@
 from django_elasticsearch_dsl import Document, fields
 from django_elasticsearch_dsl.registries import registry
-from taskmanager.models import Task
+from tasks.models import Task
 
 @registry.register_document
 class TaskDocument(Document):
