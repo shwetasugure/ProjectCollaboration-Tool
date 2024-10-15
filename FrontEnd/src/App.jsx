@@ -18,7 +18,7 @@ function App() {
             <Route path="navbar" element={<Navbar/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            {/* <Route path="/Projects" element={<ProjectsPage />} /> */}
+            <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/" element={<Dashboard />} />
             {/* <Route path="projects/new" element={<ProjectForm />} /> */}
             <Route path="/project/:id" element={<ProjectDetails/>} />

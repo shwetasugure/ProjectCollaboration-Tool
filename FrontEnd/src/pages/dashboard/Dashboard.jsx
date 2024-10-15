@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import './dashboard.css'; // Import external CSS for styling
 import {  FaTasks, FaProjectDiagram, FaCheckCircle, FaClipboardList, FaExclamationTriangle } from 'react-icons/fa'; // Icons for the cards
-import ProjectsPage from '../projects/ProjectsPage';
 
 
 const Dashboard = () => {
@@ -38,7 +37,7 @@ const Dashboard = () => {
           
           </div>
         </div>
-        <ProjectsPage />
+        <Link to="/projects" className="view-projects-btn">View Projects</Link>
       </div>
     </div>
   );
