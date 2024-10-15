@@ -38,7 +38,7 @@ const Login = () => {
           <button type="submit" className="fancy-button">Login</button>
           <div className="extra-links">
             <a href="#">Forgot Password?</a>
-            <p>New here? <a href="#">Create an account</a></p>
+            <p>New here? <a href="Register">Create an account</a></p>
           </div>
         </form>
       </div>
