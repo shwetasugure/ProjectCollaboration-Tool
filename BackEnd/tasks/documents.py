@@ -23,7 +23,6 @@ class TaskDocument(Document):
             'title',
             'description',
             'priority',
-            
             'due_date',
 
             'created_at',

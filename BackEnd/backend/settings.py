@@ -105,10 +105,10 @@ TEMPLATES = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'your_database_name',
+        'NAME': 'taskmanager',
         'USER': 'postgres',
         'PASSWORD': 'supersecret',
-        'HOST': 'db',  # This is the service name from your Docker Compose file
+        'HOST': '127.0.0.1',  # This is the service name from your Docker Compose file
         'PORT': '5432',
     }
 }

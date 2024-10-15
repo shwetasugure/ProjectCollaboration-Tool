@@ -44,7 +44,6 @@ class TaskDocumentViewSet(BaseDocumentViewSet):
     # Fields that can be filtered
     filter_fields = {
         'priority': 'priority',
-        'completed': 'completed',
         'due_date': 'due_date',
     }
 
@@ -52,7 +51,7 @@ class TaskDocumentViewSet(BaseDocumentViewSet):
     ordering_fields = {
         'due_date': 'due_date',
         # 'priority': 'priority.keyword',
-        'completed': 'completed',
+        
     }
     
     # Default ordering
