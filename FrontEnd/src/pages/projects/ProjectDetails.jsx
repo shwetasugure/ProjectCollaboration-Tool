@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CreateTaskForm from '../../components/tasks/CreateTask';
 import TaskList from '../../components/tasks/TaskList';
 import KanbanView from '../../components/tasks/TaskKanban';
 import SearchBar from '../../components/Searchbar/SearchBar';
 import Modal from '../../components/Modal/modal'; // Import the Modal component
 import './ProjectDetails.scss';
+import api from '../../api/apiconfig';
 
 const ProjectDetails = () => {
   const [tasks, setTasks] = useState([]);
@@ -12,8 +13,10 @@ const ProjectDetails = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleAddTask = (task) => {
-    setTasks([...tasks, { ...task, id: tasks.length + 1, status: 'incomplete' }]);
-    setIsModalOpen(false); // Close modal after adding task
+    const project_id = window.location.pathname.split("/").pop();
+    const resp = api.post(`/project/${project_id}/task/`, task);
+    setTasks([...tasks, resp.data]);
+    setIsModalOpen(false);
   };
 
   const handleSearch = (term) => {
@@ -23,6 +26,16 @@ const ProjectDetails = () => {
   const filteredTasks = tasks.filter(task => 
     task.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const fetchTasks = async () => {
+    const project_id = window.location.pathname.split("/").pop();
+    const response = api.get(`/project/${project_id}/task/`);
+    setTasks((await response).data);
+  }
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
 
   return (
     <div className="project-detail-container">

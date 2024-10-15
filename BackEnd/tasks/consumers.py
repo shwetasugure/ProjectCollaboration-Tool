@@ -24,30 +24,34 @@ class ChatConsumer(WebsocketConsumer):
         )
         print(self.scope["user"], "is disconnected")
 
-
-    # # Receive message from WebSocket
-    # def receive(self, text_data):
-    #     text_data_json = json.loads(text_data)
-    #     message = text_data_json["message"]
-    #     msgtype = text_data_json["type"]
-        
-    #     match msgtype:
-    #         case "comment":
-    #             async_to_sync(self.channel_layer.group_send)(
-    #                 self.room_group_name, {"type": "comment", "message": message, "msgtype": msgtype}
-    #             )
-    #         case "task_update":
-    #             async_to_sync(self.channel_layer.group_send)(
-    #                 self.room_group_name, {"type": "task.update", "message": message, "msgtype": msgtype}
-    #             )
-    #     print(self.scope["user"], "sent message", message)
-
-    def task_update(self, event):
-        message = event["message"]
-        print(self.scope["user"],  "Updated task", message)
-        self.send(text_data=json.dumps({"type": event["msgtype"], "author": self.scope["user"].id, "message": message}))
-    
-    def comment(self, event):
+    def comment_notification(self, event):
         message = event["message"]
         print(self.scope["user"],  "commented", message)
         self.send(text_data=json.dumps({"type": event["msgtype"], "author": self.scope["user"].id, "message": message}))
+
+
+
+class TaskConsumer(WebsocketConsumer):
+    def connect(self):
+        # Join a room group for the project
+        self.project_id = self.scope['url_route']['kwargs']['project_id']
+        self.group_name = f'project_{self.project_id}'
+
+        # Join the group for broadcasting messages
+        async_to_sync(self.channel_layer.group_add)(
+            self.group_name,
+            self.channel_name
+        )
+
+        self.accept()
+
+    def disconnect(self, close_code):
+        # Leave the group when the socket is closed
+        async_to_sync(self.channel_layer.group_discard)(
+            self.group_name,
+            self.channel_name
+        )
+
+    # Handle task notification and send to WebSocket
+    def task_notification(self, event):
+        self.send(text_data=json.dumps(event['event']))

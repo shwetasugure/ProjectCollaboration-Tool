@@ -1,14 +1,43 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Login.scss';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [username, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const api = axios.create({
+    baseURL: 'http://localhost:8000/api', 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Handle login logic here
+    try {
+      const response = await api.post('token/', { username, password });
+
+      localStorage.setItem("access", response.data.access);
+      localStorage.setItem("refresh", response.data.refresh);
+      console.log("logged in")
+      
+      navigate('/'); 
+    } catch (error) {
+      alert(error.response.data);
+      console.error(error);
+    }
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("access");
+    const refreshToken = localStorage.getItem("refresh");
+    if (token && refreshToken) {
+      navigate('/');
+    }
+  }, []);
 
   return (
     <div className="login-wrapper">
@@ -17,9 +46,9 @@ const Login = () => {
         <form onSubmit={handleLogin} className="login-form">
           <div className="input-group">
             <input 
-              type="email" 
-              placeholder="Email" 
-              value={email} 
+              type="text" 
+              placeholder="Username" 
+              value={username} 
               onChange={(e) => setEmail(e.target.value)} 
               required 
               className="fancy-input"

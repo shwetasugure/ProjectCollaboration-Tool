@@ -10,38 +10,37 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-
   const navigate = useNavigate();
+
+
+  const api = axios.create({
+    baseURL: 'http://localhost:8000/api', 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setError('');
-    setLoading(true);
 
+    
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match!");
+      return;
+    }
+    
     try {
-      const userData = { username: name, email, password };
-      await registerUser(userData);  // Call the registration API
-
-      // Auto login after successful registration
-      const loginResponse = await loginUser({ email, password });
-      const user = loginResponse.user;
-      const token = loginResponse.token;
-
-      // Store user data and token in localStorage
-      localStorage.setItem('user', JSON.stringify(user));
-      localStorage.setItem('token', token);
-
-      navigate('/dashboard');  // Redirect to dashboard
-    } catch (err) {
-      console.error('Registration error:', err);
-      // Set error message based on error response
-      if (err.response && err.response.data) {
-        setError(err.response.data.detail || 'Registration failed. Please try again.');
-      } else {
-        setError(err.message || 'Registration failed. Please try again.');
-      }
-    } finally {
-      setLoading(false);  // Reset loading state
+      const response = await api.post("/register/", { username, email, password });
+      console.log("Registration successful!");
+      const loginResponse = await api.post("/token/", { username, password });
+      localStorage.setItem("access", loginResponse.data.access);
+      localStorage.setItem("refresh", loginResponse.data.refresh);
+      console.log("Logged in successfully!");
+      navigate('/');
+    } catch (error) {
+      alert(error.response.data);
+      console.error(error);
+      toast.error(JSON.stringify(error.response.data));
     }
   };
 
