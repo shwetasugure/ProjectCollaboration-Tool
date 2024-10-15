@@ -11,12 +11,14 @@ import TaskList from './components/tasks/TaskList'
 import TaskDetails from './components/tasks/TaskDetails'
 import ProjectsPage from './pages/projects/ProjectsPage';
 import AnalyticsDashboard from './pages/analytics/AnalyticsDashboard'; // Import the AnalyticsDashboard component
+import NotificationPage from './pages/notifications/NotificationPage';
 function App() {
   return (
     <Router>
         <Routes>
             <Route path="navbar" element={<Navbar/>} />
             <Route path="/login" element={<Login />} />
+            <Route path="/notifications"  element={<NotificationPage />}/>
             <Route path="/register" element={<Register />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/" element={<Dashboard />} />
@@ -26,6 +28,7 @@ function App() {
             <Route path="/tasks/:id" element={<TaskDetails />} />
             <Route path="/analytics" component={AnalyticsDashboard} /> // Adjust the route as necessary
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/notifications" component={NotificationPage} />
         </Routes>
     </Router>
   );
