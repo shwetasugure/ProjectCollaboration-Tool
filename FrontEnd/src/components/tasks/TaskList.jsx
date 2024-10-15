@@ -1,17 +1,25 @@
 import React from 'react';
 import TaskCard from './TaskCard';
-import './TaskList.scss';
 
-const TaskList = ({ tasks }) => {
+const TaskList = ({ tasks = [], onMarkComplete, onDelete, onEdit, onAddComment }) => {
   return (
     <div className="task-list">
-      {tasks.length === 0 ? (
-        <p>No tasks available.</p>
+      {tasks.length > 0 ? (
+        tasks.map(task => (
+          <TaskCard
+            key={task.id}
+            task={task}
+            onMarkComplete={onMarkComplete}
+            onDelete={onDelete}
+            onEdit={onEdit}
+            onAddComment={onAddComment}  // Passing the comment function
+          />
+        ))
       ) : (
-        tasks.map(task => <TaskCard key={task.id} task={task} />)
+        <p>No tasks available</p>
       )}
     </div>
   );
 };
 
-export default TaskList;
+export default React.memo(TaskList);

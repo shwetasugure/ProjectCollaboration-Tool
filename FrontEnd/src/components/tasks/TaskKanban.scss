@@ -1,16 +1,42 @@
-.kanban-view {
+.kanban-board {
   display: flex;
   justify-content: space-between;
+  padding: 20px;
+}
 
-  .kanban-column {
-    flex: 1;
-    margin: 0 10px;
-    background: #f9f9f9;
-    padding: 10px;
-    border-radius: 8px;
+.column {
+  width: 45%;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+}
 
-    h3 {
-      text-align: center;
-    }
-  }
+.task-card {
+  background-color: white;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: move; /* Indicate that the card is draggable */
+}
+
+.kanban-board {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  width: 48%;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.task-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
 }

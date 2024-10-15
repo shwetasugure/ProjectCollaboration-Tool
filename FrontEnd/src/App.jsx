@@ -20,7 +20,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/" element={<Dashboard />} />
-            {/* <Route path="projects/new" element={<ProjectForm />} /> */}
+            <Route path="/task/:id" element={<TaskDetails />} />
             <Route path="/project/:id" element={<ProjectDetails/>} />
             <Route path="/tasks" element={<TaskList />} />
             <Route path="/tasks/:id" element={<TaskDetails />} />

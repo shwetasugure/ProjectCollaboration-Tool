@@ -57,7 +57,7 @@ const ProjectsPage = () => {
 
   return (
     <>
-    {/* <Navbar /> */}
+    <Navbar />
     
     <div className="project-dashboard">
        

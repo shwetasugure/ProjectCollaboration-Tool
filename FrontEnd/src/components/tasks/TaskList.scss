@@ -1,47 +1,69 @@
 .task-list-container {
-    padding: 20px;
-    background-color: #f8f9fa;
-  }
-  
-  .view-toggle {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  
-    button {
-      padding: 10px;
-      background-color: #4285f4;
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-  
-      &:hover {
-        background-color: #357ae8;
-      }
-    }
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  
-    th, td {
-      padding: 10px;
-      border: 1px solid #ddd;
-    }
-  
-    th {
-      background-color: #f1f1f1;
-    }
-  }
-  
-  .kanban-card {
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
-  }
-  
-  
+  padding: 20px;
+  background-color: #f0f2f5; /* Softer background */
+  border-radius: 10px; /* Rounded corners for better design */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+.empty-message {
+  text-align: center;
+  color: #888;
+  font-size: 1.2rem;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.view-toggle {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: flex-end;
+}
+
+.view-toggle button {
+  padding: 10px 15px;
+  background-color: #4285f4; /* Your preferred color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-toggle button:hover {
+  background-color: #357ae8;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+}
+
+th {
+  background-color: #f7f7f7;
+  color: #333;
+  font-weight: bold;
+}
+
+.kanban-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  transition: transform 0.2s ease;
+}
+
+.kanban-card:hover {
+  transform: translateY(-5px);
+}

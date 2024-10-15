@@ -1,0 +1,173 @@
+.task-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.task-header {
+  background-color: #4285F4;
+  color: white;
+  padding: 20px;
+  border-radius: 8px 8px 0 0;
+
+  h1 {
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
+
+.task-meta {
+  margin-top: 15px;
+
+  p {
+    margin: 8px 0;
+    font-size: 14px;
+    strong {
+      font-weight: bold;
+    }
+  }
+}
+
+.edit-task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+  }
+
+  button {
+    background-color: #15AB98;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #128a77;
+    }
+  }
+}
+
+.comments-section {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  .comments-list {
+    flex: 1; /* Allow the comments list to grow */
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 300px; /* Set a maximum height */
+    margin-bottom: 20px;
+
+    .comment {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+
+      strong {
+        color: #333;
+      }
+
+      span {
+        font-size: 14px;
+        color: #666;
+      }
+    }
+  }
+
+  .add-comment-form {
+    display: flex;
+    flex-direction: column;
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      align-self: flex-end;
+      background-color: #4285F4;
+      padding: 10px 15px;
+      font-size: 16px;
+
+      &:hover {
+        background-color: #3367d6;
+      }
+    }
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .task-detail-container {
+    flex-direction: column;
+  }
+
+  .task-header {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .edit-task-form input,
+  .edit-task-form textarea,
+  .edit-task-form select,
+  button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .comments-section h2 {
+    font-size: 20px;
+  }
+}
