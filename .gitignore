@@ -1,6 +1,7 @@
 # Ignore virtual environment folder
 venv/
 .venv
+db.sqlite3
 
 # Ignore SQLite database
 BackEnd/db.sqlite3
