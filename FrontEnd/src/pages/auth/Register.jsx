@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './Register.scss';
 import { registerUser, loginUser } from '../../services/authService'; // Import the API functions
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -22,25 +23,19 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-
-    
-    if (password !== confirmPassword) {
-      toast.error("Passwords do not match!");
-      return;
-    }
     
     try {
-      const response = await api.post("/register/", { username, email, password });
+      await api.post("/register/", { "username": name, email, password });
       console.log("Registration successful!");
-      const loginResponse = await api.post("/token/", { username, password });
-      localStorage.setItem("access", loginResponse.data.access);
-      localStorage.setItem("refresh", loginResponse.data.refresh);
+      const loginResponse = await api.post("/token/", { "username": name, password });
+      const data = await loginResponse;
+      localStorage.setItem("access", data.access);
+      localStorage.setItem("refresh", data.refresh);
       console.log("Logged in successfully!");
       navigate('/');
     } catch (error) {
-      alert(error.response.data);
+      alert(JSON.stringify(error.response?.data));
       console.error(error);
-      toast.error(JSON.stringify(error.response.data));
     }
   };
 
