@@ -75,7 +75,7 @@ const Register = () => {
           {loading ? 'Registering...' : 'Register'}
         </button>
         <p className="redirect">
-          Already have an account? <a href="/login">Login</a>
+          Already have an account? <a href="Login">Login</a>
         </p>
       </form>
     </div>
