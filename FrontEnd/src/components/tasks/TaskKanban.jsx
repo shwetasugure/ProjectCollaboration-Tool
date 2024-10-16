@@ -41,6 +41,12 @@ const KanbanBoard = () => {
     { id: 4, title: 'Task 4', description: 'Description for Task 4', status: 'completed' },
   ]);
 
+  const logTaskState = (tasks) => {
+    tasks.forEach(task => {
+      console.log(`Task ID: ${task.id}, Status: ${task.status}`);
+    });
+  };
+
   const moveTask = (fromIndex, toIndex) => {
     const updatedTasks = [...tasks];
     const [movedTask] = updatedTasks.splice(fromIndex, 1); // Remove task from original position
@@ -51,6 +57,8 @@ const KanbanBoard = () => {
     movedTask.status = newStatus;
 
     setTasks(updatedTasks); // Update the state
+    
+    logTaskState(updatedTasks); // Log the changes after drop
   };
 
   const incompleteTasks = tasks.filter(task => task.status === 'incomplete');
@@ -60,7 +68,7 @@ const KanbanBoard = () => {
     <DndProvider backend={HTML5Backend}>
       <div className="kanban-board">
         
-      <div className="column">
+        <div className="column">
           <h3>All Tasks</h3>
           {tasks.map((task, index) => (
             <TaskCard
@@ -79,7 +87,6 @@ const KanbanBoard = () => {
           ))}
         </div>
 
-      
         <div className="column">
           <h3>Completed Tasks</h3>
           {completedTasks.map((task, index) => (
@@ -91,8 +98,6 @@ const KanbanBoard = () => {
             />
           ))}
         </div>
-
-       
         
       </div>
     </DndProvider>
