@@ -45,7 +45,7 @@ const Navbar = () => {
 
         {/* Notification Icon */}
        
-          <Link to="/notifications">
+        <Link to="/notifications" className="notification-link">
             <i className="fas fa-bell"></i>
             {unreadCount > 0 && <span className="notification-badge">{unreadCount}</span>}
           </Link>
