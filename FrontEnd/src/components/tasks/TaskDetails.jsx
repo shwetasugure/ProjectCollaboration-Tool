@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './TaskDetail.css';
 import Navbar from '../Navbar/Navbar';
+import api from '../../api/apiconfig';
 
 const TaskDetails = () => {
   const location = useLocation();
@@ -15,26 +16,46 @@ const TaskDetails = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [updatedTask, setUpdatedTask] = useState(task || {});
 
-  useEffect(() => {
+  const fetchComments = async () => {
     if (task) {
-      // Dummy comments or fetch from backend
-      const commentsData = [
-        { id: 1, author: 'Alice', text: 'Don’t forget to add token expiration.' },
-        { id: 2, author: 'Bob', text: 'We should also add password reset functionality.' },
-      ];
-      setComments(commentsData);
+      const response = await api.get(`/comments/${task.id}/`);
+      console.log("Fetched Comments:", response.data);
+      setComments(response.data);
     }
-  }, [task]);
+  };
 
-  const handleAddComment = (e) => {
+  const connecttowebsocket = async () => {
+    //connect to websocket using access token
+    const ws = new WebSocket(`ws://localhost:8000/ws/chat/${task.id}/`);
+    ws.onopen = () => {
+      console.log('connected to websocket');
+    };
+    ws.onmessage = (e) => {
+      const data = JSON.parse(e.data);
+      console.log('received message:', data);
+      if (data.event.type === 'comment_created'){
+        setComments((prev) => {
+            const existingComment = prev.find(comment => comment.id === data.event.comment.id);
+            if (existingComment) return prev;
+            return [...prev, data.event.comment];
+        });
+      }
+    };
+    ws.onclose = () => {
+      console.log('disconnected from websocket');
+    };
+  }
+
+  useEffect(() => {
+    fetchComments();
+    connecttowebsocket();
+  }, []);
+
+  const handleAddComment = async (e) => {
     e.preventDefault();
     if (newComment.trim()) {
-      const newCommentData = {
-        id: comments.length + 1,
-        author: 'Current User', // Replace with the logged-in user
-        text: newComment,
-      };
-      setComments([...comments, newCommentData]);
+      const response = await api.post(`/comments/${task.id}/`, { text: newComment })
+      setComments([...comments, response.data]);
       setNewComment('');
     }
   };
@@ -53,11 +74,8 @@ const TaskDetails = () => {
   // Save the updated task and disable editing mode
   const handleSaveChanges = (e) => {
     e.preventDefault();
-    setTask(updatedTask); // Save changes to task (or send to backend)
+    setTask(updatedTask);
     setIsEditing(false);
-
-    // Optional: If you have a backend, make an API call here to update the task.
-    // Example: updateTaskAPI(updatedTask)
   };
 
   if (!task) {

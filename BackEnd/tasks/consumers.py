@@ -25,9 +25,7 @@ class ChatConsumer(WebsocketConsumer):
         print(self.scope["user"], "is disconnected")
 
     def comment_notification(self, event):
-        message = event["message"]
-        print(self.scope["user"],  "commented", message)
-        self.send(text_data=json.dumps({"type": event["msgtype"], "author": self.scope["user"].id, "message": message}))
+        self.send(text_data=json.dumps(event))
 
 
 

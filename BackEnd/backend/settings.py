@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'corsheaders',
+    'django_elasticsearch_dsl',
+    'django_elasticsearch_dsl_drf',
+
     'rest_framework',
     'rest_framework_simplejwt',
     'tasks',
@@ -105,7 +108,7 @@ TEMPLATES = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'taskmanager',
+        'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'supersecret',
         'HOST': '127.0.0.1',  # This is the service name from your Docker Compose file
