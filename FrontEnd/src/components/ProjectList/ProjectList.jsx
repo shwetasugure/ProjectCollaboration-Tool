@@ -26,7 +26,10 @@ const ProjectList = ({ onEdit, onDelete, projects }) => {
         {projects.map(project => (
           <div key={project.id} className="project-card">
             <div className="project-card-header">
-              <h3>{project.name}</h3>
+              <h3 >{project.name}</h3>
+            </div>
+            <div className="project-card-header">
+              <h5>{project.description}</h5>
             </div>
             <div className="project-card-actions">
               <Link to={`/project/${project.id}`} className="action-btn">View Details</Link>

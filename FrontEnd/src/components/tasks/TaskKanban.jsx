@@ -11,15 +11,15 @@ const ItemTypes = {
 const TaskCard = ({ task, index, moveTask }) => {
   const [, ref] = useDrag({
     type: ItemTypes.TASK,
-    item: { id: task.id, index },
+    item: { id: task.id, index }, // Includes index for drag and drop
   });
 
   const [, drop] = useDrop({
     accept: ItemTypes.TASK,
     hover(item) {
       if (item.index !== index) {
-        moveTask(item.index, index);
-        item.index = index; // Update the dragged item's index
+        moveTask(item.index, index); // Move task to new index
+        item.index = index; // Update dragged item's index
       }
     },
   });
@@ -43,11 +43,11 @@ const KanbanBoard = () => {
 
   const moveTask = (fromIndex, toIndex) => {
     const updatedTasks = [...tasks];
-    const [movedTask] = updatedTasks.splice(fromIndex, 1);
-    updatedTasks.splice(toIndex, 0, movedTask);
+    const [movedTask] = updatedTasks.splice(fromIndex, 1); // Remove task from original position
+    updatedTasks.splice(toIndex, 0, movedTask); // Insert task at new position
 
-    // Update the status based on the position after drop
-    const newStatus = toIndex < updatedTasks.length / 2 ? 'incomplete' : 'completed';
+    // Update the status based on the new position after drop
+    const newStatus = toIndex < tasks.length / 2 ? 'incomplete' : 'completed'; // Assuming two columns
     movedTask.status = newStatus;
 
     setTasks(updatedTasks); // Update the state
@@ -59,12 +59,27 @@ const KanbanBoard = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="kanban-board">
+        
+      <div className="column">
+          <h3>All Tasks</h3>
+          {tasks.map((task, index) => (
+            <TaskCard
+              key={task.id}
+              task={task}
+              index={index}
+              moveTask={moveTask}
+            />
+          ))}
+        </div>
+
         <div className="column">
           <h3>Incomplete Tasks</h3>
           {incompleteTasks.map((task, index) => (
             <TaskCard key={task.id} task={task} index={index} moveTask={moveTask} />
           ))}
         </div>
+
+      
         <div className="column">
           <h3>Completed Tasks</h3>
           {completedTasks.map((task, index) => (
@@ -76,6 +91,9 @@ const KanbanBoard = () => {
             />
           ))}
         </div>
+
+       
+        
       </div>
     </DndProvider>
   );

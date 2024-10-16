@@ -11,10 +11,10 @@ const TaskCard = ({ task }) => {
 
   return (
     <div className="task-card" onClick={goToTaskDetail}>
-      <h4>{task.title}</h4>
-      <p>{task.description}</p>
-      <p><strong>Collaborator:</strong> {task.collaborator ? task.collaborator.name : 'None'}</p>
-      <p><strong>Owner:</strong> {task.owner ? task.owner.name : 'None'}</p>
+      <h3>{task.title}</h3>
+      <h4>{task.description}</h4>
+      <p><strong>Asign to:</strong> {task.collaborator ? task.collaborator.name : 'None'}</p>
+      
       <p><strong>Due date:</strong> {task.due_date}</p>
       <p><strong>Priority:</strong> {task.priority}</p>
       <p><strong>Status:</strong> {task.status}</p>

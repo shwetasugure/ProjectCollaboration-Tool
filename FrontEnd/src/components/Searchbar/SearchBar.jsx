@@ -11,13 +11,16 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <input
-      type="text"
-      placeholder="Search tasks..."
-      value={searchTerm}
-      onChange={handleChange}
-      className="search-bar"
-    />
+    <div className="search-bar-container">
+      <input
+        type="text"
+        placeholder="Search tasks..."
+        value={searchTerm}
+        onChange={handleChange}
+        className="search-bar"
+        aria-label="Search tasks"
+      />
+    </div>
   );
 };
 

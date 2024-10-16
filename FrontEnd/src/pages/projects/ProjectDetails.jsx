@@ -112,44 +112,46 @@ const ProjectDetails = () => {
 
   return (
     <>
-    <Navbar/>
-    <div className="project-detail-container">
-      <h1>Project Details</h1>
-
-    
-      <button className="add-task-btn" onClick={() => setIsModalOpen(true)}>
-        + Add Task
-      </button>
-
-    
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <CreateTaskForm addTask={handleAddTask} />
-      </Modal>
-
-     
-      {editingTask && (
-        <Modal isOpen={!!editingTask} onClose={() => setEditingTask(null)}>
-          <CreateTaskForm task={editingTask} addTask={handleUpdateTask} />
+      <Navbar />
+      <div className="project-detail-container">
+        <h1>Project Details</h1>
+        
+        {/* Add Task and Search Bar Container */}
+        <div className="task-search-container">
+        <SearchBar onSearch={handleSearch} />
+          <button className="add-task-btn" onClick={() => setIsModalOpen(true)}>
+            + Add Task
+          </button>
+          
+        </div>
+  
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          <CreateTaskForm addTask={handleAddTask} />
         </Modal>
-      )}
-
-   
-      <SearchBar onSearch={handleSearch} />
-
-      <h2>Task List View</h2>
-      <TaskList
-        tasks={filteredTasks}
-        onEdit={(task) => setEditingTask(task)} 
-        onDelete={handleDeleteTask}
-        onMarkComplete={handleMarkComplete}
-        onAddComment={handleAddComment}
-      />
-
-      <h2>Kanban View</h2>
-      <KanbanBoard tasks={tasks} onUpdateTaskStatus={updateTaskStatus} />
-    </div>
+  
+        {editingTask && (
+          <Modal isOpen={!!editingTask} onClose={() => setEditingTask(null)}>
+            <CreateTaskForm task={editingTask} addTask={handleUpdateTask} />
+          </Modal>
+        )}
+  
+        <h2>Task List View</h2>
+        <TaskList
+          tasks={filteredTasks}
+          onEdit={(task) => setEditingTask(task)}
+          onDelete={handleDeleteTask}
+          onMarkComplete={handleMarkComplete}
+          onAddComment={handleAddComment}
+        />
+        <br />
+        <br />
+        <br />
+        <h2>Kanban View</h2>
+        <KanbanBoard tasks={tasks} onUpdateTaskStatus={updateTaskStatus} />
+      </div>
     </>
   );
+  
 };
 
 export default ProjectDetails;

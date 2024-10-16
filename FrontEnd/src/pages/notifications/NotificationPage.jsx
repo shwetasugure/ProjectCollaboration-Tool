@@ -54,8 +54,11 @@ const NotificationPage = () => {
   if (error) return <p>{error}</p>; // Show error message
 
   return (
+    <>
+     <Navbar />
+   
     <div className="notification-page">
-      <Navbar />
+     
       <div className="notification-content">
         <h2>Notifications</h2>
         {notifications.length === 0 ? (
@@ -76,6 +79,7 @@ const NotificationPage = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

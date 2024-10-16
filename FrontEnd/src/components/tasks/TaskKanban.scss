@@ -1,42 +1,65 @@
+$light-gray: #f9f9f9; // Light gray for backgrounds
+$border-radius: 8px; // Border radius for buttons and inputs
+$primary-color: #15AB98; // Primary color for accents
+
 .kanban-board {
   display: flex;
   justify-content: space-between;
   padding: 20px;
+  flex-wrap: wrap; // Allow columns to wrap on smaller screens
+  gap: 20px; // Add spacing between columns
+
+  .column {
+    flex: 1 1 48%; // Allow columns to grow and shrink, with a base width of 48%
+    background-color: $light-gray; // Use defined light gray color
+    border: 1px solid #ccc; // Add border for definition
+    border-radius: $border-radius; // Rounded corners
+    padding: 15px; // Increased padding for better spacing
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px; // Subtle shadow for depth
+    min-width: 300px; // Minimum width for columns to maintain layout
+
+    h3 { // Optional: Add styles for column headers
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: $primary-color; // Use primary color for headers
+    }
+
+    .task-card {
+      background-color: #fff; // White background for task cards
+      border: 1px solid #ccc; // Light border for cards
+      border-radius: $border-radius; // Rounded corners
+      padding: 10px;
+      margin-bottom: 10px; // Space between task cards
+      cursor: move; // Indicate that the card is draggable
+      transition: transform 0.2s; // Smooth transition for drag effects
+
+      &:hover {
+        transform: translateY(-2px); // Lift effect on hover for interactivity
+      }
+
+      // Optional: Add styles for task titles
+      .task-title {
+        font-weight: bold; // Bold title for emphasis
+        margin-bottom: 5px; // Space below title
+      }
+
+      // Optional: Add styles for task descriptions
+      .task-description {
+        font-size: 0.9rem; // Smaller font for descriptions
+        color: #666; // Subtle color for descriptions
+      }
+    }
+  }
 }
 
-.column {
-  width: 45%;
-  background-color: #f0f0f0;
-  padding: 10px;
-  border-radius: 5px;
-}
+// Media Queries for Responsiveness
+@media (max-width: 768px) {
+  .kanban-board {
+    flex-direction: column; // Stack columns on smaller screens
+    padding: 10px;
 
-.task-card {
-  background-color: white;
-  padding: 10px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  cursor: move; /* Indicate that the card is draggable */
-}
-
-.kanban-board {
-  display: flex;
-  justify-content: space-between;
-}
-
-.column {
-  width: 48%;
-  background-color: #f4f4f4;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 10px;
-}
-
-.task-card {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 10px;
-  margin-bottom: 10px;
+    .column {
+      width: 100%; // Full width for each column on smaller screens
+    }
+  }
 }

@@ -1,0 +1,33 @@
+$primary-color: #1554ab; // Example color
+$border-radius: 5px;
+
+.search-bar-container {
+  display: flex;
+  justify-content: center; // Center the search bar horizontally
+  align-items: center; // Center vertically
+  margin: 20px; // Spacing around the search bar
+}
+
+.search-bar {
+  width: 100%; // Make it responsive
+  max-width: 400px; // Limit the maximum width
+  padding: 10px; // Padding inside the input
+  border: 1px solid #ccc; // Light gray border
+  border-radius: $border-radius; // Use the border radius variable
+  font-size: 16px; // Increase font size for readability
+  transition: border-color 0.3s, box-shadow 0.3s; // Smooth transition for focus effect
+
+  &::placeholder {
+    color: #aaa; // Placeholder color
+  }
+
+  &:focus {
+    border-color: $primary-color; // Change border color on focus
+    outline: none; // Remove default outline
+    box-shadow: 0 0 5px rgba($primary-color, 0.5); // Add shadow for focus
+  }
+
+  &:hover {
+    border-color: $primary-color; // Change border color on hover
+  }
+}

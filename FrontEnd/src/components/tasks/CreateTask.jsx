@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import './CreateTask.scss';
 
-const CreateTaskForm = ({ addTask, collaborators = [1,2,3,4], owners = [1,2,3,4] }) => {
+const CreateTaskForm = ({ addTask, assignto = [1,2,3,4] }) => {
   const [task, setTask] = useState({
     title: '',
     description: '',
-    collaborator: '',
-    owner: '',
+    assignto: '',
     due_date: '',
     priority: 'medium',
   });
@@ -19,7 +18,7 @@ const CreateTaskForm = ({ addTask, collaborators = [1,2,3,4], owners = [1,2,3,4]
   const handleSubmit = (e) => {
     e.preventDefault();
     addTask(task);
-    setTask({ title: '', description: '', collaborator: '', owner: '', due_date: '', priority: 'medium' });
+    setTask({ title: '', description: '', assignto: '', due_date: '', priority: 'medium' });
   };
 
   return (
@@ -55,39 +54,19 @@ const CreateTaskForm = ({ addTask, collaborators = [1,2,3,4], owners = [1,2,3,4]
 
       {/* Collaborator Dropdown */}
       <div className="form-group">
-        <label htmlFor="collaborator">Collaborator</label>
+        <label htmlFor="assignto">Assign To</label>
         <select
-          id="collaborator"
-          name="collaborator"
-          value={task.collaborator}
+          id="assignto"
+          name="assignto"
+          value={task.assignto}
           onChange={handleChange}
           required
         >
-          <option value="">Select Collaborator</option>
+          <option value="">Assign To</option>
           <option>2</option>
-          {collaborators.map((collaborator) => (
+          {assignto.map((collaborator) => (
             <option key={collaborator.id} value={collaborator.id}>
               {collaborator.id} - {collaborator.name}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Owner Dropdown */}
-      <div className="form-group">
-        <label htmlFor="owner">Owner</label>
-        <select
-          id="owner"
-          name="owner"
-          value={task.owner}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select Owner</option>
-          <option >1</option>
-          {owners.map((owner) => (
-            <option key={owner.id} value={owner.id}>
-              {owner.id} - {owner.name}
             </option>
           ))}
         </select>

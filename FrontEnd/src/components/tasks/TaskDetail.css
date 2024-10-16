@@ -11,7 +11,7 @@
   margin-top: 30px;
 }
 
-.task-header {
+.task-detail-container .task-header {
   background-color: #4285F4;
   color: white;
   padding: 20px;
@@ -27,7 +27,7 @@
   }
 }
 
-.task-meta {
+.task-detail-container  .task-meta {
   margin-top: 15px;
 
   p {
@@ -39,7 +39,7 @@
   }
 }
 
-.edit-task-form {
+.task-detail-container .edit-task-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -61,7 +61,7 @@
     box-sizing: border-box; /* Ensures padding is included in the width */
   }
 
-  button {
+  .task-detail-container  button {
     background-color: #15AB98;
     color: white;
     padding: 10px;
@@ -77,7 +77,7 @@
   }
 }
 
-.comments-section {
+.task-detail-container .comments-section {
   flex: 1;
   background-color: #fff;
   padding: 20px;
@@ -91,7 +91,7 @@
     margin-bottom: 15px;
   }
 
-  .comments-list {
+  .task-detail-container .comments-list {
     flex: 1; /* Allow the comments list to grow */
     overflow-y: auto; /* Enable vertical scrolling */
     max-height: 300px; /* Set a maximum height */
@@ -114,7 +114,7 @@
     }
   }
 
-  .add-comment-form {
+  .task-detail-container  .add-comment-form {
     display: flex;
     flex-direction: column;
 
@@ -128,7 +128,7 @@
       font-size: 16px;
     }
 
-    button {
+    .task-detail-container button {
       align-self: flex-end;
       background-color: #4285F4;
       padding: 10px 15px;
@@ -147,15 +147,15 @@
     flex-direction: column;
   }
 
-  .task-header {
+  .task-detail-container   .task-header {
     padding: 15px;
   }
 
-  h1 {
+  .task-detail-container  h1 {
     font-size: 22px;
   }
 
-  p {
+  .task-detail-container p {
     font-size: 14px;
   }
 
