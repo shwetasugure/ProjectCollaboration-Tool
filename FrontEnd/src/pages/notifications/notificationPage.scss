@@ -1,40 +1,49 @@
 .notification-page {
-    padding: 20px;
-    background-color: #f8f9fa; // Light background
-    color: #333; // Dark text
-  }
+  padding-top: 40px; // Adjust padding to account for fixed navbar height
+  height: 100%;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.notification-content {
+  max-width: 600px;
+  margin: 0 auto; // Center the content
+  background-color: #fff; // White background for notifications
+  border-radius: 8px; // Rounded corners
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Subtle shadow
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.notification-list {
+  list-style: none;
+  padding: 0;
+}
+
+.notification-item {
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea; // Divider between notifications
+  transition: background-color 0.2s;
+  cursor: pointer;
   
-  .notification-content {
-    max-width: 600px;
-    margin: 0 auto; // Center the content
-    background-color: #fff; // White background for notifications
-    border-radius: 8px; // Rounded corners
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Subtle shadow
-    padding: 20px;
+  &:hover {
+    background-color: #f1f1f1; // Highlight on hover
   }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .notification-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .notification-item {
-    padding: 10px;
-    border-bottom: 1px solid #eaeaea; // Divider between notifications
-    transition: background-color 0.2s;
-    cursor: pointer;
-    
-    &:hover {
-      background-color: #f1f1f1; // Highlight on hover
-    }
-  }
-  
-  .notification-item:last-child {
-    border-bottom: none; // Remove border from last item
-  }
-  
+}
+
+.notification-item:last-child {
+  border-bottom: none; // Remove border from last item
+}
+
+/* Fixing the Navbar */
+.notification-page .navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Optional shadow for the navbar
+}

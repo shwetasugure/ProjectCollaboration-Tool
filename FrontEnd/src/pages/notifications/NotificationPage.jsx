@@ -55,6 +55,7 @@ const NotificationPage = () => {
 
   return (
     <div className="notification-page">
+      {/* Fixed Navbar */}
       <Navbar />
       <div className="notification-content">
         <h2>Notifications</h2>
