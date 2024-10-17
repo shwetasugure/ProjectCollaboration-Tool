@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import './TaskDetail.css';
 import Navbar from '../Navbar/Navbar';
 import api from '../../api/apiconfig';
@@ -7,14 +7,22 @@ import api from '../../api/apiconfig';
 const TaskDetails = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const {p_id, id} = useParams();
   
+  const [isEditing, setIsEditing] = useState(false);
+  const [updatedTask, setUpdatedTask] = useState();
+
   const [task, setTask] = useState(location.state ? location.state.task : null);
+  const fetchTask = async () => {
+    const response = await api.get(`/project/${p_id}/task/${id}/`);
+    setTask(response.data);
+    setUpdatedTask(response.data);
+  };
+
+
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   
-  // New states to handle task editing
-  const [isEditing, setIsEditing] = useState(false);
-  const [updatedTask, setUpdatedTask] = useState(task || {});
 
   const fetchComments = async () => {
     if (task) {
@@ -26,9 +34,9 @@ const TaskDetails = () => {
 
   const connecttowebsocket = async () => {
     //connect to websocket using access token
-    const ws = new WebSocket(`ws://localhost:8000/ws/chat/${task.id}/`);
+    const ws = new WebSocket(`ws://localhost:8000/ws/chat/${id}/`);
     ws.onopen = () => {
-      console.log('connected to websocket');
+      console.log('connected to comments websocket');
     };
     ws.onmessage = (e) => {
       const data = JSON.parse(e.data);
@@ -46,8 +54,29 @@ const TaskDetails = () => {
     };
   }
 
+  const connecttoproject = async () => {
+    const ws = new WebSocket(`ws://localhost:8000/ws/project/${p_id}/`);
+    ws.onopen = () => {
+      console.log('connected to project websocket');
+    };
+    ws.onmessage = (e) => {
+      const data = JSON.parse(e.data);
+      console.log('received message:', data);
+      if (data.type === 'task_updated') {
+        setTask(data.task)
+      } else if (data.type === 'task_deleted') {
+        navigate(`/project/${p_id}`);
+      }
+    };
+    ws.onclose = () => {
+      console.log('disconnected from websocket');
+    };
+  }
+
   useEffect(() => {
     fetchComments();
+    connecttoproject();
+    fetchTask();
     connecttowebsocket();
   }, []);
 
@@ -74,7 +103,9 @@ const TaskDetails = () => {
   // Save the updated task and disable editing mode
   const handleSaveChanges = (e) => {
     e.preventDefault();
-    setTask(updatedTask);
+    console.log("Saving changes:", updatedTask);
+    const response = api.put(`/project/${p_id}/task/${id}/`, updatedTask);
+    setTask(response.data);
     setIsEditing(false);
   };
 

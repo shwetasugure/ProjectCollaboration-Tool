@@ -1,18 +1,19 @@
 import React from 'react';
 import TaskCard from './TaskCard';
 
-const TaskList = ({ tasks = [], onMarkComplete, onDelete, onEdit, onAddComment }) => {
+const TaskList = ({ tasks = [], project_id, onMarkComplete, onDelete, onEdit, onAddComment }) => {
   return (
     <div className="task-list">
       {tasks.length > 0 ? (
         tasks.map(task => (
           <TaskCard
+            project_id={project_id}
             key={task.id}
             task={task}
             onMarkComplete={onMarkComplete}
             onDelete={onDelete}
             onEdit={onEdit}
-            onAddComment={onAddComment}  // Passing the comment function
+            onAddComment={onAddComment}
           />
         ))
       ) : (
