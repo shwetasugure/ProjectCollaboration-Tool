@@ -10,14 +10,14 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const ws = new WebSocket(WS_URL);
+    // const ws = new WebSocket(WS_URL);
 
-    ws.onmessage = (event) => {
-      const notification = JSON.parse(event.data);
-      setUnreadCount((prevCount) => prevCount + 1); // Increment unread notifications count
-    };
+    // ws.onmessage = (event) => {
+    //   const notification = JSON.parse(event.data);
+    //   setUnreadCount((prevCount) => prevCount + 1); // Increment unread notifications count
+    // };
 
-    return () => ws.close();
+    // return () => ws.close();
   }, []);
 
   // Toggle mobile menu

@@ -17,13 +17,16 @@ function App() {
     <Router>
         <Routes>
             <Route path="navbar" element={<Navbar/>} />
+
             <Route path="/login" element={<Login />} />
-            <Route path="/notifications"  element={<NotificationPage />}/>
             <Route path="/register" element={<Register />} />
-            <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/" element={<Dashboard />} />
-            <Route path="/task/:id" element={<TaskDetails />} />
+            <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/project/:id" element={<ProjectDetails/>} />
+            <Route path="project/:p_id/task/:id" element={<TaskDetails />} />
+            <Route path="/notifications"  element={<NotificationPage />}/>
+
+
             <Route path="/tasks" element={<TaskList />} />
             <Route path="/tasks/:id" element={<TaskDetails />} />
             <Route path="/analytics" component={AnalyticsDashboard} /> // Adjust the route as necessary
