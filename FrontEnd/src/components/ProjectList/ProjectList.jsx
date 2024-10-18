@@ -28,8 +28,8 @@ const ProjectList = ({ onEdit, onDelete, projects }) => {
             <div className="project-card-header">
               <h3 >{project.name}</h3>
             </div>
-            <div className="project-card-header">
-              <h5>{project.description}</h5>
+            <div className="project-card-header desc">
+              <p>{project.description}</p>
             </div>
             <div className="project-card-header">
               {

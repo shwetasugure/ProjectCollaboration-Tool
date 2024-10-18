@@ -2,7 +2,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #1E1C28;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   font-family: 'Arial', sans-serif;
@@ -54,7 +54,7 @@
   select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #444353;
     border-radius: 4px;
     font-size: 16px;
     color: #333;
@@ -62,7 +62,7 @@
   }
 
   .task-detail-container  button {
-    background-color: #15AB98;
+    background-color: #1A73E8;
     color: white;
     padding: 10px;
     border: none;
@@ -79,7 +79,7 @@
 
 .task-detail-container .comments-section {
   flex: 1;
-  background-color: #fff;
+  background-color:#262538 ;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -123,6 +123,7 @@
       height: 100px;
       padding: 10px;
       border: 1px solid #ddd;
+      background: #444353;
       border-radius: 4px;
       margin-bottom: 10px;
       font-size: 16px;
@@ -130,12 +131,12 @@
 
     .task-detail-container button {
       align-self: flex-end;
-      background-color: #4285F4;
+      background-color: #1A73E8;
       padding: 10px 15px;
       font-size: 16px;
 
       &:hover {
-        background-color: #3367d6;
+        background-color: #0d438a;
       }
     }
   }

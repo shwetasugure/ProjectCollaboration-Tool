@@ -1,16 +1,18 @@
 .task-list-container {
   padding: 20px;
-  background-color: #f0f2f5; /* Softer background */
+  background-color:#1E1C28 ; /* Softer background */
   border-radius: 10px; /* Rounded corners for better design */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
 }
 
+
+
 .empty-message {
   text-align: center;
-  color: #888;
+  color: #ffffff;
   font-size: 1.2rem;
   padding: 20px;
-  background-color: #fff;
+  
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

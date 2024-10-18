@@ -1,20 +1,28 @@
 .project-list-container {
     padding: 20px;
-    
+
+
+
+    .desc p{
+     color: #9FB0CE ;
+     font-size: 0.9em;
+    }
     
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       display: none;
+     
   
       h2 {
         font-size: 24px;
         margin: 0;
+       
       }
   
       .add-project-btn {
-        background-color: #007bff;
+        background-color: #6F83D8;
         color: white;
         padding: 10px 20px;
         border: none;
@@ -37,7 +45,7 @@
     }
   
     .project-card {
-      background-color: white;
+      background-color:#262538;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -48,11 +56,15 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        
+        
+       
   
         h3 {
           margin: 0;
           font-size: 18px;
           font-weight: bold;
+          color: white;
         }
   
         .status-badge {
@@ -77,7 +89,7 @@
         .action-btn {
           margin-right: 10px;
           padding: 8px 16px;
-          background-color: #007bff;
+          background-color:#4660CB;
           color: white;
           border-radius: 5px;
           text-decoration: none;

@@ -76,7 +76,7 @@ const KanbanBoard = ({tasks, setTasks, handleUpdateTask}) => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="kanban-board">
+      <div className="kanban-boards">
         <Column status="todo" moveTask={moveTask}>
           {taskColumns.todo.map((task) => (
             <TaskCard key={task.id} task={task} />

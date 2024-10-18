@@ -1,10 +1,10 @@
-.task-card {
-    background: #fff;
+.task-cards {
+  background:#262538;
     padding: 15px;
     margin-bottom: 10px;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
+    
     h3{
       margin-bottom: 5px;
       font-weight: bold;
@@ -12,6 +12,8 @@
   
     p {
       margin: 5px 0;
+      color: #9FB0CE ;
+     font-size: 0.9em;
     }
   
     button {

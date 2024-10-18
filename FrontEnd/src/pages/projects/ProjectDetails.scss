@@ -9,7 +9,7 @@ $transition-time: 0.3s; // Transition duration for effects
   margin: 0 auto;
   padding: 20px;
   font-family: 'Poppins', sans-serif; // Consistent font
-  background-color: $light-gray; // Background color
+  background-color:#1E1C28 ; // Background color
   border-radius: $border-radius; // Rounded corners
   
 
@@ -23,7 +23,7 @@ $transition-time: 0.3s; // Transition duration for effects
   h2 {
     margin-top: 20px;
     font-size: 1.8rem;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 10px;
     font-weight: 600; // Slightly bolder
   }
@@ -123,7 +123,7 @@ $transition-time: 0.3s; // Transition duration for effects
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     padding: 20px;
-    background: $light-gray;
+    background-color:#1E1C28 ;
     border-radius: $border-radius;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   }

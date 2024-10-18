@@ -207,10 +207,11 @@ const TaskDetails = () => {
         </div>
 
         <form onSubmit={handleAddComment} className="add-comment-form">
-          <textarea
+          <textarea 
+          className='textarea'
             placeholder="Add a comment..."
             value={newComment}
-            style={{ width: '100%', height: '100px' }}
+            style={{ width: '100%', height: '100px', background:"#3C3B4E" }}
             onChange={(e) => setNewComment(e.target.value)}
           />
           <button type="submit">Add Comment</button>

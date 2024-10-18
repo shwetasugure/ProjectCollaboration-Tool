@@ -10,7 +10,7 @@ const TaskCard = ({ project_id, task, onMarkComplete, onDelete, onEdit, onAddCom
   };
 
   return (
-    <div className="task-card">
+    <div className="task-cards cards">
       <h4>{task.title}</h4>
       <p>{task.description}</p>
       <p><strong>Assigned to:</strong> {task.assigned_user_username ? task.assigned_user_username : "None"}</p>

@@ -4,15 +4,16 @@ $primary-color: #1A73E8;
 $card-background: #fff;
 $shadow-color: rgba(0, 0, 0, 0.1);
 
-.kanban-board {
+.kanban-boards{
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  padding: 20px;
+  
+  background: #1E1C28;
 
   .column {
     flex: 1;
-    background-color: $light-gray;
+    background-color: #262538 ;
     border-radius: $border-radius;
     padding: 15px;
     box-shadow: 0 2px 4px $shadow-color;
@@ -25,7 +26,7 @@ $shadow-color: rgba(0, 0, 0, 0.1);
     }
 
     .task-card {
-      background-color: $card-background;
+      background-color:#444353;
       border: 1px solid #ccc;
       border-radius: $border-radius;
       padding: 10px;
@@ -65,7 +66,7 @@ $shadow-color: rgba(0, 0, 0, 0.1);
   border: 2px solid transparent;
   padding: 16px;
   margin: 8px;
-  background-color: #f0f0f0;
+  background-color: #27283A;
   min-height: 200px;
   transition: border-color 0.3s ease;
 
