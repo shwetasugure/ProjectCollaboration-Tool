@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { RiDeleteBin6Line } from "react-icons/ri";
 import './TaskCard.scss';
 
 const TaskCard = ({ project_id, task, onMarkComplete, onDelete, onEdit, onAddComment}) => {
@@ -18,8 +19,9 @@ const TaskCard = ({ project_id, task, onMarkComplete, onDelete, onEdit, onAddCom
       <p><strong>Priority:</strong> {task.priority}</p>
       <p><strong>Status:</strong> {task.status}</p>
       {/* <button onClick={onMarkComplete}>Toggle Complete</button> */}
-      <button onClick={() => {onDelete(task.id)}}>Delete Task</button>
+      
       <button onClick={goToTaskDetail}>Open</button>
+      <button onClick={() => {onDelete(task.id)}}><RiDeleteBin6Line /></button>
     </div>
   );
 };

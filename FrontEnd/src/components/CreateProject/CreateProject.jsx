@@ -103,7 +103,7 @@ const  CreateProject = ({ currentProject, addProject, fetchProjects }) => {
           <div className="search-results">
             {
               searchResults.map((user) => (
-                <div key={user.username} onClick={() => addCollaborator(user)} style={{cursor: "pointer",backgroundColor: "#f0f0f0" ,padding: "5px 10px"}}>
+                <div key={user.username} onClick={() => addCollaborator(user)} style={{cursor: "pointer",border:'5px' ,padding: "5px 10px"}}>
                   {user.username} 
                 </div>
               ))

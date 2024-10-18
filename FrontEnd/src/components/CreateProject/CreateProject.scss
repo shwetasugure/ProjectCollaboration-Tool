@@ -1,5 +1,5 @@
 .create-project-container {
-  background: white; /* Use white background */
+  background: #262538; /* Use white background */
   padding: 30px; /* Increased padding for a more spacious layout */
   border-radius: 10px; /* More rounded corners */
   margin-top: 20px;
@@ -17,29 +17,39 @@
   .form-group {
     margin-bottom: 20px; /* More space between form groups */
 
+    
     label {
       display: block;
       font-weight: 600; /* Bolder font for labels */
-      color: #616161; /* Darker color for labels */
+      color: #ffffff; /* Darker color for labels */
       margin-bottom: 5px; /* Space below the label */
+
+      
     }
+    .search-results{
+      background-color:#3C3B4E ;
+      color: #ffffff;
+    }
+
 
     input,
     textarea {
       width: 100%;
       padding: 12px; /* Increased padding for comfort */
-      border: 1px solid #E0E0E0; /* Light border color */
+      border: 1px solid #676666; /* Light border color */
       border-radius: 8px; /* More rounded corners */
       margin-top: 5px;
       font-size: 16px; /* Larger font size for readability */
       transition: border-color 0.3s; /* Transition for border color */
-
+      background-color: #3C3B4E;
       &:focus {
         border-color: #039BE5; /* Change border color on focus */
         outline: none; /* Remove default outline */
         box-shadow: 0 0 5px rgba(3, 155, 229, 0.5); /* Light shadow on focus */
       }
     }
+
+    
 
     textarea {
       resize: none; /* Prevent resizing */
@@ -64,3 +74,5 @@
     }
   }
 }
+
+

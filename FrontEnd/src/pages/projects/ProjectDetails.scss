@@ -58,6 +58,7 @@ $transition-time: 0.3s; // Transition duration for effects
       flex: 1; // Allow search bar to take remaining space
       display: flex;
       justify-content: flex-end;
+     
 
       input {
         width: 100%; // Full width of the container
@@ -100,7 +101,9 @@ $transition-time: 0.3s; // Transition duration for effects
     }
 
     h2 {
-      font-size: 1.5rem; // Smaller font for subheadings
+      font-size: 1.5rem;
+      margin-left: 40px; 
+      
     }
 
     .task-search-container {

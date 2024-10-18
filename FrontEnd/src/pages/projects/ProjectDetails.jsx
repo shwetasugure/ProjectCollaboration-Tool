@@ -8,6 +8,8 @@ import api from '../../api/apiconfig';
 import './ProjectDetails.scss';
 import Navbar from '../../components/Navbar/Navbar'
 import { useParams } from 'react-router-dom';
+import { TfiViewListAlt } from "react-icons/tfi";
+import { RiKanbanView2 } from "react-icons/ri";
 
 const ProjectDetails = () => {
   const [tasks, setTasks] = useState([]);
@@ -142,7 +144,8 @@ const ProjectDetails = () => {
     <>
       <Navbar />
       <div className="project-detail-container">
-      <h1>Project Details</h1>
+      <h1> {project.name}</h1>
+      <br />
       <div className="task-search-container">
         <SearchBar onSearch={handleSearch} />
         <button className="add-task-btn" onClick={() => setIsModalOpen(true)}>
@@ -156,7 +159,7 @@ const ProjectDetails = () => {
       {
         tab === "List" ? (
           <>
-            <h2 style={{textAlign:"left", cursor: 'pointer'}} onClick={() => {setTab("Kanban")}} > {tab} View</h2>
+            <h2 style={{textAlign:"left", cursor: 'pointer', height:'50px', marginLeft:'30px'}} onClick={() => {setTab("Kanban")}} > <TfiViewListAlt /> </h2>
             <TaskList
               tasks={filteredTasks}
               project_id={window.location.pathname.split("/").pop()}
@@ -168,7 +171,7 @@ const ProjectDetails = () => {
           </>
         ) : (
           <>
-            <h2 style={{textAlign:"left", cursor: 'pointer'}} onClick={() => {setTab("List")}} >{tab} View</h2>
+            <h2 style={{textAlign:"left", cursor: 'pointer' ,height:'50px', marginLeft:'30px'}} onClick={() => {setTab("List")}} ><RiKanbanView2 /></h2>
             <KanbanBoard tasks={tasks} setTasks={setTasks} handleUpdateTask={handleUpdateTask} />
           </>
         )
