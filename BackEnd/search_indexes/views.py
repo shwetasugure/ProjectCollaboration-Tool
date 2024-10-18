@@ -55,7 +55,7 @@ class TaskDocumentViewSet(BaseDocumentViewSet):
     }
     
     # Default ordering
-    # ordering = ('due_date', 'priority', 'completed')
+    ordering = ('due_date', 'priority', 'completed')
 
     # def filter_queryset(self, queryset):
         # return queryset.filter('term', user__id=self.request.user.id)

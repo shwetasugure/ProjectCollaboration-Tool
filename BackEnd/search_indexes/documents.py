@@ -23,9 +23,7 @@ class TaskDocument(Document):
             'title',
             'description',
             'priority',
-            
             'due_date',
-
-            'created_at',
-            'updated_at',
+            'status',     # Add this field if it exists
+            'completed',
         ]
