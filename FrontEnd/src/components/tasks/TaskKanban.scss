@@ -1,65 +1,89 @@
-$light-gray: #f9f9f9; // Light gray for backgrounds
-$border-radius: 8px; // Border radius for buttons and inputs
-$primary-color: #15AB98; // Primary color for accents
+$light-gray: #f9f9f9;
+$border-radius: 8px;
+$primary-color: #1A73E8;
+$card-background: #fff;
+$shadow-color: rgba(0, 0, 0, 0.1);
 
 .kanban-board {
   display: flex;
   justify-content: space-between;
+  gap: 20px;
   padding: 20px;
-  flex-wrap: wrap; // Allow columns to wrap on smaller screens
-  gap: 20px; // Add spacing between columns
 
   .column {
-    flex: 1 1 48%; // Allow columns to grow and shrink, with a base width of 48%
-    background-color: $light-gray; // Use defined light gray color
-    border: 1px solid #ccc; // Add border for definition
-    border-radius: $border-radius; // Rounded corners
-    padding: 15px; // Increased padding for better spacing
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px; // Subtle shadow for depth
-    min-width: 300px; // Minimum width for columns to maintain layout
+    flex: 1;
+    background-color: $light-gray;
+    border-radius: $border-radius;
+    padding: 15px;
+    box-shadow: 0 2px 4px $shadow-color;
+    min-width: 300px;
 
-    h3 { // Optional: Add styles for column headers
+    h3 {
       font-size: 1.5rem;
       margin-bottom: 15px;
-      color: $primary-color; // Use primary color for headers
+      color: $primary-color;
     }
 
     .task-card {
-      background-color: #fff; // White background for task cards
-      border: 1px solid #ccc; // Light border for cards
-      border-radius: $border-radius; // Rounded corners
+      background-color: $card-background;
+      border: 1px solid #ccc;
+      border-radius: $border-radius;
       padding: 10px;
-      margin-bottom: 10px; // Space between task cards
-      cursor: move; // Indicate that the card is draggable
-      transition: transform 0.2s; // Smooth transition for drag effects
+      margin-bottom: 10px;
+      cursor: move;
+      transition: transform 0.2s;
 
       &:hover {
-        transform: translateY(-2px); // Lift effect on hover for interactivity
+        transform: translateY(-2px);
       }
+    }
 
-      // Optional: Add styles for task titles
-      .task-title {
-        font-weight: bold; // Bold title for emphasis
-        margin-bottom: 5px; // Space below title
-      }
-
-      // Optional: Add styles for task descriptions
-      .task-description {
-        font-size: 0.9rem; // Smaller font for descriptions
-        color: #666; // Subtle color for descriptions
-      }
+    .add-task-btn {
+      display: block;
+      margin-top: 10px;
+      background-color: $primary-color;
+      color: #fff;
+      padding: 10px;
+      border-radius: $border-radius;
+      cursor: pointer;
+      text-align: center;
     }
   }
 }
 
-// Media Queries for Responsiveness
 @media (max-width: 768px) {
   .kanban-board {
-    flex-direction: column; // Stack columns on smaller screens
-    padding: 10px;
+    flex-direction: column;
 
     .column {
-      width: 100%; // Full width for each column on smaller screens
+      width: 100%;
     }
   }
+}
+
+.column {
+  border: 2px solid transparent;
+  padding: 16px;
+  margin: 8px;
+  background-color: #f0f0f0;
+  min-height: 200px;
+  transition: border-color 0.3s ease;
+
+  &.highlight {
+    border-color: #00aaff;  // Color to highlight when a task is hovered
+    background-color: #e6f7ff;  // Slight background change when hovering
+  }
+
+  .empty-column {
+    color: #999;
+    font-style: italic;
+  }
+}
+
+.task-card {
+  background-color: white;
+  padding: 12px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px;
 }

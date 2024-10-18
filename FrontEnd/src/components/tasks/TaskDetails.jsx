@@ -19,6 +19,11 @@ const TaskDetails = () => {
     setUpdatedTask(response.data);
   };
 
+  const [users, setUsers] = useState([]);
+  const fetchProject = async () => {
+    const response = await api.get(`/project/${p_id}/`);
+    setUsers([...response.data.collaborators, response.data.owner]);
+  }
 
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
@@ -27,7 +32,6 @@ const TaskDetails = () => {
   const fetchComments = async () => {
     if (task) {
       const response = await api.get(`/comments/${task.id}/`);
-      console.log("Fetched Comments:", response.data);
       setComments(response.data);
     }
   };
@@ -74,11 +78,15 @@ const TaskDetails = () => {
   }
 
   useEffect(() => {
-    fetchComments();
     connecttoproject();
-    fetchTask();
     connecttowebsocket();
+    fetchTask();
+    fetchProject();
   }, []);
+
+  useEffect(() => {
+    fetchComments();
+  }, [task]);
 
   const handleAddComment = async (e) => {
     e.preventDefault();
@@ -132,13 +140,21 @@ const TaskDetails = () => {
               onChange={handleInputChange}
               placeholder="Task Description"
             />
-            <input
-              type="text"
-              name="assigned_to"
-              value={updatedTask.assigned_to}
-              onChange={handleInputChange}
-              placeholder="Assigned To"
-            />
+          <select
+            id="assignto"
+            name="assigned_user"
+            value={task.assigned_user}
+            onChange={handleInputChange}
+          >
+            <option value="">Assign To</option>
+            {
+              users.map((collaborator) => (
+                <option key={collaborator.id} value={collaborator.id}>
+                  {collaborator.username}
+                </option>
+              ))
+            }
+          </select>
             <input
               type="date"
               name="due_date"
@@ -159,7 +175,8 @@ const TaskDetails = () => {
               value={updatedTask.status}
               onChange={handleInputChange}
             >
-              <option value="incomplete">Incomplete</option>
+              <option value="todo">TODO</option>
+              <option value="in_progress">In Progress</option>
               <option value="completed">Completed</option>
             </select>
             <button type="submit">Save Changes</button>
@@ -169,8 +186,7 @@ const TaskDetails = () => {
             <h1>{task.title}</h1>
             <p>{task.description}</p>
             <div className="task-meta">
-            <p><strong>Collaborator:</strong> {task.collaborator ? task.collaborator.name : 'None'}</p>
-            <p><strong>Owner:</strong> {task.owner ? task.owner.name : 'None'}</p>
+            <p><strong>Assigned To:</strong> {task.assigned_user ? task.assigned_user_username : 'None'}</p>
               <p><strong>Due Date:</strong> {task.due_date}</p>
               <p><strong>Priority:</strong> {task.priority}</p>
               <p><strong>Status:</strong> {task.status}</p>
@@ -194,6 +210,7 @@ const TaskDetails = () => {
           <textarea
             placeholder="Add a comment..."
             value={newComment}
+            style={{ width: '100%', height: '100px' }}
             onChange={(e) => setNewComment(e.target.value)}
           />
           <button type="submit">Add Comment</button>

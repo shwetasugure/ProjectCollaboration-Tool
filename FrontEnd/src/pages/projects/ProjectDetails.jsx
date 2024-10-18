@@ -14,6 +14,7 @@ const ProjectDetails = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingTask, setEditingTask] = useState(null); 
+  const [tab, setTab] = useState("List");
   const {id} = useParams();
 
 
@@ -27,19 +28,6 @@ const ProjectDetails = () => {
       setTasks([]);
     }
   };
-
-
-  const updateTaskStatus = async (taskId, newStatus) => {
-    try {
-      await api.patch(`/task/${taskId}/`, { status: newStatus });
-      fetchTasks();
-    } catch (error) {
-      console.error('Error updating task status:', error);
-    }
-  };
-
-
-
 
   const handleAddTask = async (task) => {
     try {
@@ -134,8 +122,19 @@ const ProjectDetails = () => {
     };
   }
 
+  const [project, setProject] = useState({}); 
+  const fetchProject = async () => {
+    try {
+      const response = await api.get(`/project/${id}/`);
+      setProject({...response.data, collaborators: [...response.data.collaborators, response.data.owner]});
+    } catch (error) {
+      console.error('Error fetching project:', error);
+    }
+  };
+
   useEffect(() => {
     fetchTasks();
+    fetchProject();
     connecttowebsocket();
   }, []);
 
@@ -143,65 +142,45 @@ const ProjectDetails = () => {
     <>
       <Navbar />
       <div className="project-detail-container">
-        <h1>Project Details</h1>
-        
-        {/* Add Task and Search Bar Container */}
-        <div className="task-search-container">
+      <h1>Project Details</h1>
+      <div className="task-search-container">
         <SearchBar onSearch={handleSearch} />
-          <button className="add-task-btn" onClick={() => setIsModalOpen(true)}>
-            + Add Task
-          </button>
-          
-        </div>
-  
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-          <CreateTaskForm addTask={handleAddTask} />
-        </Modal>
-<<<<<<< HEAD
-  
-        {editingTask && (
-          <Modal isOpen={!!editingTask} onClose={() => setEditingTask(null)}>
-            <CreateTaskForm task={editingTask} addTask={handleUpdateTask} />
-          </Modal>
-        )}
-  
-        <h2>Task List View</h2>
-        <TaskList
-          tasks={filteredTasks}
-          onEdit={(task) => setEditingTask(task)}
-          onDelete={handleDeleteTask}
-          onMarkComplete={handleMarkComplete}
-          onAddComment={handleAddComment}
-        />
-        <br />
-        <br />
-        <br />
-        <h2>Kanban View</h2>
-        <KanbanBoard tasks={tasks} onUpdateTaskStatus={updateTaskStatus} />
+        <button className="add-task-btn" onClick={() => setIsModalOpen(true)}>
+          + Add Task
+        </button>
       </div>
-=======
-      )}
 
-   
-      <SearchBar onSearch={handleSearch} />
-
-      <h2>Task List View</h2>
-      <TaskList
-        tasks={filteredTasks}
-        project_id={window.location.pathname.split("/").pop()}
-        onEdit={(task) => setEditingTask(task)} 
-        onDelete={handleDeleteTask}
-        onMarkComplete={handleMarkComplete}
-        onAddComment={handleAddComment}
-      />
-
-      <h2>Kanban View</h2>
-      <KanbanBoard tasks={tasks} onUpdateTaskStatus={updateTaskStatus} />
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <CreateTaskForm addTask={handleAddTask} assignto={project.collaborators}/>
+      </Modal>
+      {
+        tab === "List" ? (
+          <>
+            <h2 style={{textAlign:"left", cursor: 'pointer'}} onClick={() => {setTab("Kanban")}} > {tab} View</h2>
+            <TaskList
+              tasks={filteredTasks}
+              project_id={window.location.pathname.split("/").pop()}
+              onEdit={(task) => setEditingTask(task)} 
+              onDelete={handleDeleteTask}
+              onMarkComplete={handleMarkComplete}
+              onAddComment={handleAddComment}
+            />
+          </>
+        ) : (
+          <>
+            <h2 style={{textAlign:"left", cursor: 'pointer'}} onClick={() => {setTab("List")}} >{tab} View</h2>
+            <KanbanBoard tasks={tasks} setTasks={setTasks} handleUpdateTask={handleUpdateTask} />
+          </>
+        )
+      }
     </div>
->>>>>>> 06ec2bf9d99bb2ff25c6e3b8d516a700b2a87a81
     </>
   );
   
 };
 
 export default ProjectDetails;
+
+
+// notification
+// analytics

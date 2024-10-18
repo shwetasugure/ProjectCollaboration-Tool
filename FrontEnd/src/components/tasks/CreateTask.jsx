@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import './CreateTask.scss';
 
-const CreateTaskForm = ({ addTask, assignto = [1,2,3,4] }) => {
+const CreateTaskForm = ({ addTask, assignto}) => {
   const [task, setTask] = useState({
     title: '',
     description: '',
-    assignto: '',
+    assigned_user: '',
     due_date: '',
     priority: 'medium',
   });
@@ -18,7 +18,7 @@ const CreateTaskForm = ({ addTask, assignto = [1,2,3,4] }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addTask(task);
-    setTask({ title: '', description: '', assignto: '', due_date: '', priority: 'medium' });
+    setTask({ title: '', description: '', assigned_user: '', due_date: '', priority: 'medium' });
   };
 
   return (
@@ -57,16 +57,15 @@ const CreateTaskForm = ({ addTask, assignto = [1,2,3,4] }) => {
         <label htmlFor="assignto">Assign To</label>
         <select
           id="assignto"
-          name="assignto"
-          value={task.assignto}
+          name="assigned_user"
+          value={task.assigned_user}
           onChange={handleChange}
           required
         >
           <option value="">Assign To</option>
-          <option>2</option>
           {assignto.map((collaborator) => (
             <option key={collaborator.id} value={collaborator.id}>
-              {collaborator.id} - {collaborator.name}
+              {collaborator.id} - {collaborator.username}
             </option>
           ))}
         </select>

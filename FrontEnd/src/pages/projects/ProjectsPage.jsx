@@ -50,7 +50,6 @@ const ProjectsPage = () => {
     setProjects(projects.filter(project => project.id !== projectId));
   };
 
-
   useEffect(() => {
     fetchProjects();
   }, []);
@@ -73,7 +72,7 @@ const ProjectsPage = () => {
         projects={projects}
         onEdit={editProject}
         onDelete={deleteProject}
-      />
+        />
 
       {/* Modal for create/edit project */}
       {isModalOpen && (
@@ -81,6 +80,8 @@ const ProjectsPage = () => {
           <CreateProject
             addProject={addProject}
             currentProject={currentProject}
+            fetchProjects={fetchProjects}
+            closeModal={closeModal}
           />
         </Modal>
       )}

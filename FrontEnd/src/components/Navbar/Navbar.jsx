@@ -53,11 +53,7 @@ const Navbar = () => {
 
         {/* User Profile Dropdown */}
         <div className="navbar-profile">
-          <i className="fas fa-user-circle"  style={{  margin:'3px' ,fontSize: '27px' }}></i>
-          <div className="profile-dropdown">
-            <Link to="/Login">Login</Link>
-            <Link to="/Register">Register</Link>
-          </div>
+            <Link to="/login">Logout</Link>
         </div>
       </div>
     </nav>

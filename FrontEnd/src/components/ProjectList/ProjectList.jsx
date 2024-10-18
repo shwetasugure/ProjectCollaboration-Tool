@@ -31,6 +31,13 @@ const ProjectList = ({ onEdit, onDelete, projects }) => {
             <div className="project-card-header">
               <h5>{project.description}</h5>
             </div>
+            <div className="project-card-header">
+              {
+                project.collaborators.map(collaborator => {
+                  return <span style={{"backgroundColor" : "gray", "padding": "5px", borderRadius: "6px"}} key={collaborator.id} className="collaborator">{collaborator.username}</span>
+                })
+              }
+            </div>
             <div className="project-card-actions">
               <Link to={`/project/${project.id}`} className="action-btn">View Details</Link>
               <button onClick={() => onEdit(project)} className="action-btn">Edit</button>

@@ -31,14 +31,6 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem("access");
-    const refreshToken = localStorage.getItem("refresh");
-    if (token && refreshToken) {
-      navigate('/');
-    }
-  }, []);
-
   return (
     <div className="login-wrapper">
       <div className="login-box">

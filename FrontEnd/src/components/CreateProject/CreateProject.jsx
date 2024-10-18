@@ -2,11 +2,41 @@ import React, { useState, useEffect } from 'react';
 import './CreateProject.scss';
 import api from '../../api/apiconfig';
 
-const CreateProject = ({ currentProject, addProject }) => {
+const  CreateProject = ({ currentProject, addProject, fetchProjects }) => {
   const [project, setProject] = useState({
     name: '',
     description: '',
+    collaborators: []
   });
+  const [users, setUsers] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+
+  const fetchUsers = async () => {
+    try {
+      const response = await api.get('/users/');
+      setUsers(response.data);
+    } catch (err) {
+      console.error('Error fetching users: ', err);
+    }
+  }
+
+  const searchUsers = async (searchTerm) => {
+    if (!searchTerm) {
+      setSearchResults([]);
+      return;
+    }
+    const results = users.filter(user => user.username.includes(searchTerm));
+    setSearchResults(results);
+  }
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  useEffect(() => {
+    searchUsers(searchTerm);
+  }, [searchTerm]);
 
   useEffect(() => {
     if (currentProject) {
@@ -19,13 +49,20 @@ const CreateProject = ({ currentProject, addProject }) => {
     setProject({ ...project, [name]: value });
   };
 
+  const addCollaborator = (user) => {
+    setProject({ ...project, collaborators: [...project.collaborators, user] });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       if (currentProject) {
         // Update existing project
-        const response = await api.put(`/project/${currentProject.id}/`, project);
-        addProject(response.data);
+        const req = {
+          ...project, collaborators: project.collaborators.map(colaborator => colaborator.id)
+        }
+        const response = await api.put(`/project/${currentProject.id}/`, req);
+        fetchProjects();
       } else {
         // Create new project
         const response = await api.post('/project/', project);
@@ -60,9 +97,32 @@ const CreateProject = ({ currentProject, addProject }) => {
             required
           ></textarea>
         </div>
-        {/* <button type="submit" disabled={loading}> */}
+        <div className="form-group">
+          <label>Collaborators:</label>
+          <input placeholder="search username ..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value )}/>
+          <div className="search-results">
+            {
+              searchResults.map((user) => (
+                <div key={user.username} onClick={() => addCollaborator(user)} style={{cursor: "pointer",backgroundColor: "#f0f0f0" ,padding: "5px 10px"}}>
+                  {user.username} 
+                </div>
+              ))
+            }
+          </div>
+          {
+            project.collaborators.map((colaborator) => {
+              return (
+                <div key={colaborator.id} className="colaborator" style={{display:"flex", justifyContent:"space-between"}}>
+                  <span>{colaborator.username}</span>
+                  <div style={{backgroundColor: "#f0f0f0", cursor: "pointer"}} onClick={() => {setProject({ ...project, collaborators: project.collaborators.filter((c) => c.id !== colaborator.id) }); setSearchTerm("")}}>
+                    x
+                  </div>
+                </div>
+              )
+            })
+          }
+        </div>
         <button type="submit">
-          {/* {loading ? 'Saving...' : currentProject ? 'Update Project' : 'Create Project'} */}
           Save Project
         </button>
       </form>
