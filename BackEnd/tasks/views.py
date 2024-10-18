@@ -99,8 +99,8 @@ class UserCreateView(generics.CreateAPIView):
 class UserListView(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    def get_queryset(self):
-        return User.objects.filter(~Q(id=self.request.user.id))
+    # def get_queryset(self):
+    #     return User.objects.filter(~Q(id=self.request.user.id))
 
 class IsProjectOwnerOrCollaborator(BasePermission):
     def has_permission(self, request, view):
