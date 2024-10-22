@@ -70,7 +70,17 @@ const AnalyticsDashboard = () => {
   return (
     <div className="analytics-dashboard">
       
-      {/* List View for Upcoming Tasks */}
+     
+      <div className="" style={{display:"flex"}}>
+        <div className='card' style={{margin: "10px"}}>
+          <h3>Tasks Completed Per Team Member</h3>
+          {tasksCompleted.length > 0 ? (
+            <Bar data={data} options={options} />
+          ) : (
+            <p>No tasks completed yet.</p>
+          )}
+        </div>
+         {/* List View for Upcoming Tasks */}
       <div className="" style={{display:'flex', justifyContent: 'space-evenly'}}>
         <div className="card" style={{margin: "10px"}}>
           <h3 style={{textAlign: 'left'}}>Upcoming Tasks</h3>
@@ -105,15 +115,6 @@ const AnalyticsDashboard = () => {
         </div>
       </div>
 
-      <div className="" style={{display:"flex"}}>
-        <div className='card' style={{margin: "10px"}}>
-          <h3>Tasks Completed Per Team Member</h3>
-          {tasksCompleted.length > 0 ? (
-            <Bar data={data} options={options} />
-          ) : (
-            <p>No tasks completed yet.</p>
-          )}
-        </div>
         {/* Small and Shorter Average Time Card */}
         <div className="card" style={{margin: "10px"}}>
           <h3>Avg Time to Complete</h3>
