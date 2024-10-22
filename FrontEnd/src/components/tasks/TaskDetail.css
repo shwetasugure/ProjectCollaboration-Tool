@@ -72,7 +72,7 @@
     transition: background-color 0.3s;
 
     &:hover {
-      background-color: #128a77;
+      background-color: #072cb5;
     }
   }
 }

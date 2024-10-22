@@ -1,8 +1,15 @@
 .analytics-dashboard {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center; /* Center the cards horizontally */
+  flex-wrap: wrap; /* Allow wrapping for responsiveness */
   gap: 20px;
-  align-items: center; /* Corrected to 'center' for proper alignment */
 }
 
 .card {
@@ -11,16 +18,8 @@
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 100%; /* Allow card to take full width of container */
-  max-width: 600px; /* Set a maximum width for each card */
+  max-width: 900px; /* Set a maximum width for each card */
   box-sizing: border-box; /* Include padding and border in width */
-}
-
-.average-time {
-  font-size: 0.9rem;
-  text-align: center;
-  padding: 10px;
-  background-color: #f8f8f8;
-  color: #333;
 }
 
 .card h3 {

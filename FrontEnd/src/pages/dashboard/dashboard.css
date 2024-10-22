@@ -2,6 +2,7 @@
   padding: 20px;
   background-color: #1E1C28 ;
   min-height: 100vh; /* Adjust height to fit the content */
+  width: 100%;
 }
 
 h2 {
@@ -19,10 +20,12 @@ h2 {
 }
 
 .card {
-  background: linear-gradient(135deg, #3a496f, #1f2a48); /* Gradient background for a modern look */
+  /* npm run ha */
+  /* Gradient background for a modern look */
+  
   border-radius: 12px; /* Slightly larger rounding for a smooth look */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6); /* Deeper shadow for more depth */
-  padding: 25px;
+  padding: 105px;
   flex: 1;
   text-align: center;
   position: relative;
@@ -32,7 +35,7 @@ h2 {
 
 .card-icon {
   font-size: 3rem;
-  color: #82aaff;
+  color: #052f8a;
   margin-bottom: 15px;
 }
 
