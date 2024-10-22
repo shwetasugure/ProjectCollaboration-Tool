@@ -43,13 +43,13 @@ const Navbar = () => {
         <Link to="/analytics">Analytics</Link> */}
         
 
-        {/* Notification Icon */}
+        {/* Notification Icon
        
         <Link to="/notifications" className="notification-link">
             <i className="fas fa-bell"></i>
             {unreadCount > 0 && <span className="notification-badge">{unreadCount}</span>}
           </Link>
-        
+         */}
 
         {/* User Profile Dropdown */}
         <div className="navbar-profile">

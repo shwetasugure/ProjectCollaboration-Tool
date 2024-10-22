@@ -17,8 +17,6 @@ function App() {
     <Router>
         <Routes>
             <Route path="navbar" element={<Navbar/>} />
-
-            <Route path="/notifications"  element={<NotificationPage />}/>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/" element={<Dashboard />} />
